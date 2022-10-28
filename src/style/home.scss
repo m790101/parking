@@ -1,0 +1,27 @@
+
+.search{
+    position: absolute;
+    z-index: 99;
+    left:50%;
+    transform: translate(-50%,0);
+    top:5%;
+    height:40px;
+    width:80%;
+    //max-width:500px;
+    padding: 10px 10px 10px 35px;
+    border-radius:20px;
+    border: 2px solid var(--5-gray);
+}
+.suggestion{
+    background-color:var(--white);
+    position: absolute;
+    z-index: 99;
+    left:50%;
+    transform: translate(-50%,0);
+    top:calc(5% + 40px);
+    width:80%;
+    padding: 10px;
+    &__item{
+        margin:15px;
+    }
+}
