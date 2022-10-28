@@ -18,10 +18,11 @@ return (
             <img src="https://i.imgur.com/H4QPxLR.png" alt="" className='nav-phone__item__icon'/>
                 搜尋</li>
             </Link>
-
+            <Link to='/news'>
             <li className='nav-phone__item d-flex flex-column justify-content-center align-items-center'>
             <img src="https://i.imgur.com/mbYIfnY.png" alt="" className='nav-phone__item__icon'/>
                 最新消息</li>
+            </Link>
         </ul>
     </>
 )

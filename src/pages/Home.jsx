@@ -3,6 +3,7 @@ import './../style/home.scss'
 import { useJsApiLoader, GoogleMap, Marker } from '@react-google-maps/api'
 import { useCallback, useState, useRef, useEffect } from 'react'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
+import mapStyle from '../mapStyle'
 //import axios from 'axios'
 const libraries = ["places"];
 const containerStyle = { width: '100%', height: '95vh' }
@@ -50,6 +51,7 @@ const Map = ()=>{
               fullScreenControl: false,
               disableDefaultUI: true,
               zoomControl: true,
+              styles: mapStyle
             }}
             onLoad={onMapLoad}
           >
