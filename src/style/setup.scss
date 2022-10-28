@@ -307,9 +307,9 @@ textarea {
   background-color: var(--formbg-gray);
 
   //更改input自動填入時的背景色
-  &:-webkit-autofill {
+  /*&:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px var(--formbg-gray) inset;
-  }
+  }*/
 
   //預設文字樣式
   &::placeholder {
@@ -330,3 +330,8 @@ textarea {
 .word-break-keep{
  word-break:break-all
 } 
+
+.app{
+    position: relative;
+    height:100vh;
+}

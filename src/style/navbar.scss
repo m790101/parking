@@ -1,0 +1,27 @@
+
+    .nav-phone{
+        position: fixed;
+        left:0;
+        bottom: 0;
+        width:100%;
+        height:90px;
+        background-color:var(--5-gray);
+        &__item{
+
+            &__icon{
+                width:30px;
+                height:30px;
+            }
+        }
+    }
+    
+    /*.nav__desk{
+        display: none;
+        width:100%;
+        height:90px;
+        background-color:blue;
+        &__panel{
+            background:green;
+        }
+    }*/
+
