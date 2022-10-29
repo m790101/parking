@@ -1,12 +1,12 @@
 
-    .nav-phone{
+    .nav-phone__panel{
         z-index: 999;
         position: fixed;
         bottom: 0;
         height:90px;
         left:50%;
         transform: translate(-50%,0);
-        background-color:var(--5-gray);
+        background-color:var(--4-gray);
         &__item{
             &__icon{
                 width:30px;
@@ -14,6 +14,38 @@
             }
         }
     }
+    .nav-desk{
+        display: none;
+    }
+
+@media (min-width:750px){
+    .nav-phone{
+        display:none;
+    }
+    .nav-desk{
+        display: initial;
+        top:0;
+        z-index: 999;
+        position: absolute;
+        bottom: 0;
+        left:0;
+        width:100px;
+        &__panel{
+            height:100vh;
+            background-color:var(--4-gray);
+            &__item{
+                &__icon{
+                    width:30px;
+                    height:30px;
+                }
+            }
+        }
+
+    }
+
+}
+
+
 
     /*.nav__desk{
         display: none;
