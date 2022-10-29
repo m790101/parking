@@ -1,6 +1,5 @@
 import React from 'react'
 import './../style/home.scss'
-import Navbar from '../components/Navbar'
 import { useJsApiLoader, GoogleMap, Marker } from '@react-google-maps/api'
 import { useCallback, useState, useRef, useEffect } from 'react'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
@@ -12,7 +11,7 @@ let center = { lat: 25.03, lng: 121.554 }
 
 const Map = () => {
   //let [parkingMarkers, setParkingMarkers] = useState([])
-  //const [currentMarker, setCurrentMarkers] = useState([])
+  const [currentMarker, setCurrentMarkers] = useState([])
   const [searchMarkers, setSearchMarkers] = useState([])
   const mapRef = useRef()
   const onMapLoad = useCallback(map => {
@@ -40,6 +39,7 @@ const Map = () => {
   }
   return (
       <div className='map'>
+         <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} />
         <GoogleMap
           className='google-map'
           center={center}
@@ -50,12 +50,22 @@ const Map = () => {
             mapTypeControl: false,
             fullScreenControl: false,
             disableDefaultUI: true,
-            zoomControl: true,
+            zoomControl: false,
             styles: mapStyle
           }}
           onLoad={onMapLoad}
         >
          <Search panTo={panTo} setSearchMarkers={setSearchMarkers} />
+         {currentMarker.map(marker => <Marker
+          key={marker.id}
+          position={{ lat: marker.lat, lng: marker.lng }}
+          icon={{
+            url: 'https://i.imgur.com/kDPoOVw.png',
+            scaledSize: new window.google.maps.Size(30, 23),
+            origin: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(15, 11)
+          }}
+        />)}
         </GoogleMap>
       </div>
 
@@ -88,10 +98,10 @@ const Map = () => {
           const response = await getGeocode({ address: description })
           const { lat, lng } = await getLatLng(response[0]);
           panTo({ lat, lng })
-          setSearchMarkers(current => [...current, {
+          setSearchMarkers(()=> [{
             lat: lat,
             lng: lng,
-            time: new Date() + 23
+            id: new Date() + 23
           }])
 
         };
@@ -127,6 +137,36 @@ const Map = () => {
       </div>
     )
   }
+}
+
+function Locate({ panTo,setCurrentMarkers,setSearchMarkers}) {
+  return (
+    <div
+    className='locateCurrentButton cursor-pointer '
+      onClick={() => {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            panTo({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            });
+            setCurrentMarkers(() => [{
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+              time: new Date().getTime()
+            }])
+            setSearchMarkers([])
+          },
+          () => null
+        );
+
+      }
+      }
+
+    >
+      <div className='locateCurrentButton__icon'></div>
+    </div>
+  );
 }
 
 export default Map
