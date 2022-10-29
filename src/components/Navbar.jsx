@@ -29,11 +29,6 @@ return (
                 首頁
                 </Link>
             </li>
-            <Link to='/search'>
-            <li className='nav-desk__panel__item d-flex flex-column justify-content-center  align-items-center'>
-            <img src="https://i.imgur.com/H4QPxLR.png" alt="" className='nav-desk__panel__item__icon'/>
-                搜尋</li>
-            </Link>
             <Link to='/news'>
             <li className='nav-desk__panel__item d-flex flex-column justify-content-center align-items-center'>
             <img src="https://i.imgur.com/mbYIfnY.png" alt="" className='nav-desk__panel__item__icon'/>

@@ -8,6 +8,10 @@ import Details from '../components/Details'
 import axios from 'axios'
 import db from '../db.json'
 import available from '../available.json'
+import Navbar from '../components/Navbar'
+
+
+
 let availableDb = available.data.park
 let parkingDb = db.data.park
 parkingDb = parkingDb.map((park) => {
@@ -20,7 +24,7 @@ parkingDb = parkingDb.map((park) => {
   }
 })
 const libraries = ["places"];
-const containerStyle = { width: '100%', height: '100vh' }
+const containerStyle = { width: '100%', height: '100vh' ,display:'flex'}
 let center = { lat: 25.03, lng: 121.554 }
 
 const Map = () => {
@@ -97,6 +101,7 @@ const Map = () => {
 
   return (
       <div className='map'>
+
          <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers}  />
          <div>
          <GoogleMap
@@ -114,7 +119,7 @@ const Map = () => {
           }}
           onLoad={onMapLoad}
         >
-     
+          <Navbar/>
          <Search panTo={panTo} setSearchMarkers={setSearchMarkers} />
          
          {currentMarker.map(marker => <Marker

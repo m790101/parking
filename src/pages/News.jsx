@@ -1,7 +1,16 @@
-
+import React from 'react'
+import Navbar from '../components/Navbar'
 
 const News = () => {
+return (
+    <div className='d-flex'>
+        <Navbar/>
+        <div>
+        this is news
+        </div>
 
+    </div>
+)
    /* const {
         ready,
         value,
