@@ -7,14 +7,16 @@ import mapStyle from '../mapStyle'
 import Details from '../components/Details'
 import axios from 'axios'
 import db from '../db.json'
-
-
+import available from '../available.json'
+let availableDb = available.data.park
 let parkingDb = db.data.park
 parkingDb = parkingDb.map((park) => {
+  let a = availableDb.filter(a=> park.id === a.id)
   return {
     ...park,
     lat:Number(park.EntranceCoord.EntrancecoordInfo[0].Xcod),
-    lng: Number(park.EntranceCoord.EntrancecoordInfo[0].Ycod)
+    lng: Number(park.EntranceCoord.EntrancecoordInfo[0].Ycod),
+    cap:(a[0].availablecar/park.totalcar)
   }
 })
 const libraries = ["places"];
@@ -26,6 +28,7 @@ const Map = () => {
   const [currentMarker, setCurrentMarkers] = useState([])
   const [searchMarkers, setSearchMarkers] = useState([])
   const [parkingData,setParkingData] =  useState([])
+  const [availbility,setAvailbility] = useState([])
   const mapRef = useRef()
   const onMapLoad = useCallback(map => {
     mapRef.current = map
@@ -59,6 +62,7 @@ const Map = () => {
     axios.get('https://my-json-server.typicode.com/m790101/parking-data/data')
     .then(data=>{
       setParkingData(parkingDb)
+      setAvailbility(availableDb)
       data.data.park.map(async(p)=>{
         const response = await getGeocode({ address: p.address })
         const { lat, lng } = await getLatLng(response[0]);
@@ -136,6 +140,12 @@ const Map = () => {
                 {parkingData.map(marker => <Marker
           key={marker.id}
           position={{ lat: marker.lat, lng: marker.lng }}
+          icon={{
+            url: 'https://i.imgur.com/YrIA5qX.png',
+            scaledSize: new window.google.maps.Size(30, 30),
+            origin: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(15, 11)
+          }}
           onClick={() => {
             setSelected(marker)
           }}
@@ -144,6 +154,12 @@ const Map = () => {
           {parkingMarkers.map(marker => <Marker
           key={marker.id}
           position={{ lat: marker.lat, lng: marker.lng }}
+          icon={{
+            url: marker.cap > 0.1?'https://i.imgur.com/kDPoOVw.png':'https://i.imgur.com/lKDCX1d.png',
+            scaledSize: new window.google.maps.Size(30, 30),
+            origin: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(15, 11)
+          }}
           onClick={() => {
             setSelected(marker)
           }}
@@ -152,7 +168,7 @@ const Map = () => {
         </GoogleMap>
          </div>
 
-        {selected && <Details setSelected={setSelected} data={selected}/>}
+        {selected && <Details setSelected={setSelected} data={selected} availbility={availbility}/>}
       </div>
 
   )

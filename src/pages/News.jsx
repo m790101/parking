@@ -1,7 +1,6 @@
-import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
-//import { useCallback, useState, useRef, useEffect } from 'react'
 
-const Search = () => {
+
+const News = () => {
 
    /* const {
         ready,
@@ -65,4 +64,4 @@ const Search = () => {
     )*/
 }
 
-export default Search
+export default News

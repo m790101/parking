@@ -238,10 +238,12 @@ textarea {
 
 
 .btn-main {
-  background-color: var(--brand-color);
+  background-color: var(--primary-color);
   color: white;
+  width:50px;
+  padding: 5px 0;
+  text-align:center;
   border-radius: 50px;
-  height: 46px;
   &:disabled{
     background-color: var(--3-gray);
   }

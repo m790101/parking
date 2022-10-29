@@ -1,9 +1,11 @@
 import React from 'react'
 import '../style/details.scss'
 
-function Details({setSelected,data}){
+function Details({setSelected,data,availbility}){
     //let time = new Date().getHours()
+    let availableNum = availbility.filter(a=>a.id === data.id)
     let day = new Date().getDay()
+    let isMachine = data.summary.includes("塔台式")
     return (
         <div className='details '>
             <div className='d-flex align-items-center justify-content-between'>
@@ -13,13 +15,21 @@ function Details({setSelected,data}){
                 <img src="https://i.imgur.com/efx42hL.png" alt="" className='details__close' onClick={()=>setSelected(null)}/>
             </div>
             <div className='d-flex details__available'>
-                <p>50/ 0.5H</p>
+                {/*<p>50/ 0.5H</p>*/}
                 <div>
-                <span>總車位:  {data.totalcar}  </span><span>空位數:  23  </span>
+                <span>總車位:  {data.totalcar} </span><span>空位數:  {availableNum[0].availablecar}  </span>
                 </div>
             </div>
-            <div className='details__icon-section'>
-
+            <div className='details__icon-section d-flex justify-content-arouned align-items-center'>
+                <p className='btn-main'>導航</p>
+                <p>{isMachine? '機械':'平面'}</p>
+                {data.totalmotor>0 && <div>
+                    <img src="https://i.imgur.com/XrYKfB8.png" alt="" className='details__icon-section__icon' />
+                </div>}
+                {data.ChargingStation>0 && <div className='d-flex align-items-center'>
+                <img src="https://i.imgur.com/y8oBrYL.png" alt=""  className='details__icon-section__icon'/><span>x{data.ChargingStation}</span>
+                </div>}
+               
             </div>
 
                 {<ul className='fs-14'>

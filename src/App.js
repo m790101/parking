@@ -2,7 +2,7 @@ import { Routes,BrowserRouter, Route } from 'react-router-dom';
 import NotFound from './pages/NotFound'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
-import Search from './pages/Search'
+import News from './pages/News'
 import './style/app.scss'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
     <Navbar />
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/search" element={<Search/>}/>
+      <Route path="/news" element={<News/>}/>
       <Route path='*' element={<NotFound/>}/>
     </Routes>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link ,Router} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import '../style/navbar.scss'
 //import '../../public/icon/'
 
@@ -14,11 +14,6 @@ return (
                 首頁
                 </Link>
             </li>
-            <Link to='/search'>
-            <li className='nav-phone__panel__item d-flex flex-column justify-content-center  align-items-center'>
-            <img src="https://i.imgur.com/H4QPxLR.png" alt="" className='nav-phone__panel__item__icon'/>
-                搜尋</li>
-            </Link>
             <Link to='/news'>
             <li className='nav-phone__panel__item d-flex flex-column justify-content-center align-items-center'>
             <img src="https://i.imgur.com/mbYIfnY.png" alt="" className='nav-phone__panel__item__icon'/>

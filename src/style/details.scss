@@ -14,9 +14,13 @@
         height:20px;
     }
     &__icon-section{
-        background-color: green;
+        border-top:1px solid var(--3-gray);
+        border-bottom:1px solid var(--3-gray);
+        margin:16px 0px;
         width:100%;
-        height:50px;
+        height:55px;
+        gap:32px;
+        padding-left: 16px;
     }
     &__available{
         gap:25px;
@@ -25,7 +29,10 @@
         text-align:center;
     }
 }
-
+.details__icon-section__icon{
+        width:30px;
+        height:30px;
+}
 @media(min-width:750px){
     .details{
         left:initial;
