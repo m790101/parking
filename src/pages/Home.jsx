@@ -4,15 +4,28 @@ import { useJsApiLoader, GoogleMap, Marker } from '@react-google-maps/api'
 import { useCallback, useState, useRef, useEffect } from 'react'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
 import mapStyle from '../mapStyle'
-//import axios from 'axios'
+import Details from '../components/Details'
+import axios from 'axios'
+import db from '../db.json'
+
+
+let parkingDb = db.data.park
+parkingDb = parkingDb.map((park) => {
+  return {
+    ...park,
+    lat:Number(park.EntranceCoord.EntrancecoordInfo[0].Xcod),
+    lng: Number(park.EntranceCoord.EntrancecoordInfo[0].Ycod)
+  }
+})
 const libraries = ["places"];
 const containerStyle = { width: '100%', height: '100vh' }
 let center = { lat: 25.03, lng: 121.554 }
 
 const Map = () => {
-  //let [parkingMarkers, setParkingMarkers] = useState([])
+  let [parkingMarkers, setParkingMarkers] = useState([])
   const [currentMarker, setCurrentMarkers] = useState([])
   const [searchMarkers, setSearchMarkers] = useState([])
+  const [parkingData,setParkingData] =  useState([])
   const mapRef = useRef()
   const onMapLoad = useCallback(map => {
     mapRef.current = map
@@ -20,11 +33,50 @@ const Map = () => {
   }, [])
   const [selected, setSelected] = useState(null)
 
-  const panTo = React.useCallback(({ lat, lng }) => {
+  const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(17);
 
   }, []);
+
+  const initialLocate = useCallback(()=>{
+    navigator.geolocation.getCurrentPosition(
+    (position) => {
+      panTo({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+      setCurrentMarkers(() => [{
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+        id: new Date().getTime()
+      }])
+    },
+    () => null
+  )}, [panTo]) 
+
+  useEffect(() => {
+    axios.get('https://my-json-server.typicode.com/m790101/parking-data/data')
+    .then(data=>{
+      setParkingData(parkingDb)
+      data.data.park.map(async(p)=>{
+        const response = await getGeocode({ address: p.address })
+        const { lat, lng } = await getLatLng(response[0]);
+        setParkingMarkers((currents)=>{
+          currents = currents.filter(current=>current.id !== p.id)
+          return [...currents,{
+            ...p,
+            lat,
+            lng
+          }]
+        })
+    })
+  }
+  )
+  .then(()=>{
+    initialLocate()
+  })
+}, [])
 
 
 
@@ -37,10 +89,13 @@ const Map = () => {
       <h1>Loading...</h1>
     )
   }
+  
+
   return (
       <div className='map'>
-         <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} />
-        <GoogleMap
+         <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers}  />
+         <div>
+         <GoogleMap
           className='google-map'
           center={center}
           zoom={13}
@@ -55,7 +110,9 @@ const Map = () => {
           }}
           onLoad={onMapLoad}
         >
+     
          <Search panTo={panTo} setSearchMarkers={setSearchMarkers} />
+         
          {currentMarker.map(marker => <Marker
           key={marker.id}
           position={{ lat: marker.lat, lng: marker.lng }}
@@ -66,7 +123,36 @@ const Map = () => {
             anchor: new window.google.maps.Point(15, 11)
           }}
         />)}
+        {searchMarkers.map(marker => <Marker
+          key={marker.id}
+          position={{ lat: marker.lat, lng: marker.lng }}
+          icon={{
+            url: 'https://i.imgur.com/N7DhYek.png',
+            scaledSize: new window.google.maps.Size(15, 15),
+            origin: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(15, 11)
+          }}
+        />)}
+                {parkingData.map(marker => <Marker
+          key={marker.id}
+          position={{ lat: marker.lat, lng: marker.lng }}
+          onClick={() => {
+            setSelected(marker)
+          }}
+        />)}
+          
+          {parkingMarkers.map(marker => <Marker
+          key={marker.id}
+          position={{ lat: marker.lat, lng: marker.lng }}
+          onClick={() => {
+            setSelected(marker)
+          }}
+        />)}
+
         </GoogleMap>
+         </div>
+
+        {selected && <Details setSelected={setSelected} data={selected}/>}
       </div>
 
   )
@@ -101,7 +187,7 @@ const Map = () => {
           setSearchMarkers(()=> [{
             lat: lat,
             lng: lng,
-            id: new Date() + 23
+            id: new Date().getTime()
           }])
 
         };
@@ -153,7 +239,7 @@ function Locate({ panTo,setCurrentMarkers,setSearchMarkers}) {
             setCurrentMarkers(() => [{
               lat: position.coords.latitude,
               lng: position.coords.longitude,
-              time: new Date().getTime()
+              id: new Date().getTime()
             }])
             setSearchMarkers([])
           },

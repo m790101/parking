@@ -1,0 +1,36 @@
+.details{
+    padding: 20px;
+    width:100%;
+    position: fixed;
+    z-index: 999;
+    background-color: var(--white);
+    bottom: 0;
+    left:0;
+    &__header{
+        gap:15px;
+    }
+    &__close{
+        width:20px;
+        height:20px;
+    }
+    &__icon-section{
+        background-color: green;
+        width:100%;
+        height:50px;
+    }
+    &__available{
+        gap:25px;
+    }
+    &__footer{
+        text-align:center;
+    }
+}
+
+@media(min-width:750px){
+    .details{
+        left:initial;
+        
+        width:100%;
+        
+    }
+}
