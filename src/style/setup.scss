@@ -1,0 +1,338 @@
+a,
+a:hover,
+a:focus {
+  color: var(--8-gray);
+}
+
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+);
+
+/* 使用@each 產出css size設定 */
+@each $prop,
+$abbrev in (width: w, height: h) {
+
+  @each $num,
+  $val in $sizes {
+    .#{$abbrev}-#{$num} {
+      #{$prop}: $val;
+    }
+  }
+}
+
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * 0.25),
+  2: ($spacer * 0.5),
+  3: ($spacer * 0.75),
+  4: $spacer,
+  5: ($spacer * 1.25),
+  6: ($spacer * 1.5),
+  7: ($spacer * 1.75),
+  8: ($spacer * 2)
+);
+
+/* 使用@each 產出css spacer設定 */
+@each $prop,
+$abbrev in (margin: m, padding: p) {
+
+  @each $num,
+  $val in $spacers {
+    .#{$abbrev}-#{$num} {
+      #{$prop}: $val;
+    }
+
+    .#{$abbrev}t-#{$num} {
+      #{$prop}-top: $val;
+    }
+
+    .#{$abbrev}r-#{$num} {
+      #{$prop}-right: $val;
+    }
+
+    .#{$abbrev}b-#{$num} {
+      #{$prop}-bottom: $val;
+    }
+
+    .#{$abbrev}l-#{$num} {
+      #{$prop}-left: $val;
+    }
+
+    .#{$abbrev}x-#{$num} {
+      #{$prop}-left: $val;
+      #{$prop}-right: $val;
+    }
+
+    .#{$abbrev}y-#{$num} {
+      #{$prop}-top: $val;
+      #{$prop}-bottom: $val;
+    }
+  }
+}
+
+%standard-boxshadow {
+  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
+}
+
+%input-style {
+  border: 1px solid var(--3-gray);
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 1rem;
+
+  &:hover,
+  &:focus {
+    border-color: var(--5-gray);
+  }
+}
+
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: var(--white);
+  color: var(black-color);
+  font-family: "Noto Sans TC";
+}
+
+.d-none {
+  display: none;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.d-inline-block {
+  display: inline-blockt;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.justify-content-start {
+  justify-content: flex-start;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.align-content-start {
+  align-content: flex-start;
+}
+
+.align-content-end {
+  align-content: flex-end;
+}
+
+.align-content-center {
+  align-content: center;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+
+h1 {
+  font-size: 68px;
+}
+
+h2 {
+  font-size: 42px;
+}
+
+h1 {
+  font-size: 68px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+
+.fw-bold {
+  font-weight: 700;
+}
+.fw-light{
+  font-weight: 200;
+}
+
+textarea {
+  resize: none;
+}
+
+
+.btn-main {
+  background-color: var(--primary-color);
+  color: white;
+  width:50px;
+  padding: 5px 0;
+  text-align:center;
+  border-radius: 50px;
+  &:disabled{
+    background-color: var(--3-gray);
+  }
+}
+
+.btn-main:hover {
+  background-color: rgb(227, 85, 20);
+  color: white;
+}
+
+.btn-main:active {
+  background-color: rgb(227, 85, 20);
+  color: white;
+}
+
+.btn-white {
+  background-color: white;
+  color: var(--brand-color);
+  border: 1px solid var(--brand-color);
+  border-radius: 50px;
+  width: 64px;
+  height: 46px;
+  &:disabled{
+    background-color: var(--3-gray);
+    color:var(--white);
+    border: 1px solid var(--3-gray);
+  }
+}
+
+
+.btn-white:hover {
+  background-color: rgb(240, 90, 20);
+  color: white;
+}
+
+.btn-white:active {
+  background-color: rgb(240, 90, 20);
+  color: white;
+}
+
+.color-second {
+  color: var(--secondary-color);
+}
+
+.form-control {
+  width: 100%;
+  border-bottom: 2px solid var(--formline-gray);
+  border-radius: 2px;
+  background-color: var(--formbg-gray);
+  padding: 2px 10.55px;
+  margin-top: 32px;
+  &:focus-within {   
+    border-bottom: 2px solid var(--hover-color)  
+  }
+}
+
+
+.form-label {
+  color: var(--7-gray);
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.form-input {
+  border: 0px;
+  background-color: var(--formbg-gray);
+
+  //更改input自動填入時的背景色
+  /*&:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px var(--formbg-gray) inset;
+  }*/
+
+  //預設文字樣式
+  &::placeholder {
+    color: var(--5-gray);
+    line-height: 26px;
+    font-size: 16px;
+  }
+
+  //輸入文字樣式
+  &[placeholder] {
+    color: var(--8-gray);
+    line-height: 26px;
+    font-size: 16px;
+  }
+}
+
+//斷行
+.word-break-keep{
+ word-break:break-all
+} 
+
