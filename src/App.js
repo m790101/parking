@@ -1,4 +1,4 @@
-import { Routes,BrowserRouter, Route } from 'react-router-dom';
+import { Routes,HashRouter, Route } from 'react-router-dom';
 import NotFound from './pages/NotFound'
 import Home from './pages/Home'
 //import Navbar from './components/Navbar'
@@ -8,7 +8,7 @@ import './style/app.scss'
 function App() {
   return (
     <div className="container app">
-    <BrowserRouter>
+    <HashRouter>
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route index element={<Home/>}/>
@@ -16,8 +16,7 @@ function App() {
       <Route path="/news" element={<News/>}/>
       <Route path='*' element={<NotFound/>}/>
     </Routes>
-    </BrowserRouter>
-
+    </HashRouter>
     </div>
   );
 }
