@@ -9,14 +9,15 @@ function App() {
   return (
     <div className="container app">
     <BrowserRouter>
-    {/*<Navbar />*/}
     <Routes>
       <Route path="/" element={<Home/>}/>
+      <Route index element={<Home/>}/>
       <Route path="/home" element={<Home/>}/>
       <Route path="/news" element={<News/>}/>
       <Route path='*' element={<NotFound/>}/>
     </Routes>
     </BrowserRouter>
+
     </div>
   );
 }
