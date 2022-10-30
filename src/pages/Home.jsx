@@ -27,6 +27,7 @@ const libraries = ["places"];
 const containerStyle = { width: '100%', height: '100vh' ,display:'flex'}
 let center = { lat: 25.03, lng: 121.554 }
 
+
 const Map = () => {
   let [parkingMarkers, setParkingMarkers] = useState([])
   const [currentMarker, setCurrentMarkers] = useState([])
@@ -103,7 +104,7 @@ const Map = () => {
       <div className='map'>
 
          <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers}  />
-         <div>
+         <div className='try'>
          <GoogleMap
           className='google-map'
           center={center}
@@ -146,7 +147,7 @@ const Map = () => {
           key={marker.id}
           position={{ lat: marker.lat, lng: marker.lng }}
           icon={{
-            url: 'https://i.imgur.com/YrIA5qX.png',
+            url: marker.cap > 0.1?'https://i.imgur.com/FBoOQuh.png':'https://i.imgur.com/lKDCX1d.png',
             scaledSize: new window.google.maps.Size(30, 30),
             origin: new window.google.maps.Point(0, 0),
             anchor: new window.google.maps.Point(15, 11)
@@ -160,7 +161,7 @@ const Map = () => {
           key={marker.id}
           position={{ lat: marker.lat, lng: marker.lng }}
           icon={{
-            url: marker.cap > 0.1?'https://i.imgur.com/kDPoOVw.png':'https://i.imgur.com/lKDCX1d.png',
+            url: 'https://i.imgur.com/FBoOQuh.png',
             scaledSize: new window.google.maps.Size(30, 30),
             origin: new window.google.maps.Point(0, 0),
             anchor: new window.google.maps.Point(15, 11)
@@ -171,8 +172,9 @@ const Map = () => {
         />)}
 
         </GoogleMap>
-         </div>
 
+
+         </div>
         {selected && <Details setSelected={setSelected} data={selected} availbility={availbility}/>}
       </div>
 

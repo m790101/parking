@@ -1,6 +1,7 @@
 {
   "name": "parking",
   "version": "0.1.0",
+  "homepage": "https://m790101.github.io/parking",
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^2.13.1",
@@ -9,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.1.3",
     "bootstrap": "^5.2.2",
+    "gh-pages": "^4.0.0",
     "i": "^0.3.7",
     "npm": "^8.19.2",
     "react": "^18.2.0",
@@ -23,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
