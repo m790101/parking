@@ -1,0 +1,14 @@
+.events{
+    height:100vh;
+    overflow: scroll;
+    &__event{
+        border-bottom: 15px solid var(--3-gray);
+    }
+}
+
+
+@media (min-width:750px) {
+    .events{
+        margin-left: 20px;
+    }
+}

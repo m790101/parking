@@ -23,12 +23,12 @@ parkingDb = parkingDb.map((park) => {
     cap:(a[0].availablecar/park.totalcar)
   }
 })
-const libraries = ["places"];
 const containerStyle = { width: '100%', height: '100vh' ,display:'flex'}
 let center = { lat: 25.03, lng: 121.554 }
 
 
 const Map = () => {
+  const[libraries] = useState(['places'])
   let [parkingMarkers, setParkingMarkers] = useState([])
   const [currentMarker, setCurrentMarkers] = useState([])
   const [searchMarkers, setSearchMarkers] = useState([])
@@ -46,6 +46,16 @@ const Map = () => {
     mapRef.current.setZoom(17);
 
   }, []);
+  const initialMarkers = useCallback((p,lat,lng)=>{
+    setParkingMarkers((currents)=>{
+      currents = currents.filter(current=>current.id !== p.id)
+      return [...currents,{
+        ...p,
+        lat,
+        lng
+      }]
+    })
+  },[])
 
   const initialLocate = useCallback(()=>{
     navigator.geolocation.getCurrentPosition(
@@ -71,21 +81,15 @@ const Map = () => {
       data.data.park.map(async(p)=>{
         const response = await getGeocode({ address: p.address })
         const { lat, lng } = await getLatLng(response[0]);
-        setParkingMarkers((currents)=>{
-          currents = currents.filter(current=>current.id !== p.id)
-          return [...currents,{
-            ...p,
-            lat,
-            lng
-          }]
-        })
+        initialMarkers(p,lat,lng)
     })
+    console.log('hiys')
   }
   )
   .then(()=>{
     initialLocate()
   })
-}, [])
+}, [initialLocate,initialMarkers])
 
 
 
@@ -197,6 +201,7 @@ const Map = () => {
 
     const handleInput = (e) => {
       setValue(e.target.value);
+      //e.preventDefalut()
     }
 
     const handleSelect =
