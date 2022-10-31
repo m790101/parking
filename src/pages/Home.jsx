@@ -46,6 +46,7 @@ const Map = () => {
     mapRef.current.setZoom(17);
 
   }, []);
+  
 
   const initialLocate = useCallback(()=>{
     navigator.geolocation.getCurrentPosition(
@@ -71,6 +72,7 @@ const Map = () => {
       data.data.park.map(async(p)=>{
         const response = await getGeocode({ address: p.address })
         const { lat, lng } = await getLatLng(response[0]);
+        console.log('hiya')
         setParkingMarkers((currents)=>{
           currents = currents.filter(current=>current.id !== p.id)
           return [...currents,{
@@ -83,9 +85,10 @@ const Map = () => {
   }
   )
   .then(()=>{
+    console.log('yo')
     initialLocate()
   })
-}, [])
+}, [initialLocate])
 
 
 
