@@ -1,18 +1,26 @@
 import React from 'react'
 import '../style/details.scss'
 
-function Details({setSelected,data,availbility}){
+function Details({setSelected,data,availbility,setDirectionResponse,duration,setDuration, setNavigate}){
     //let time = new Date().getHours()
     let availableNum = availbility.filter(a=>a.id === data.id)
     let day = new Date().getDay()
     let isMachine = data.summary.includes("塔台式")
+    function clearUp(){
+        setSelected(null)
+        setDirectionResponse(null)
+        setNavigate(null)
+        setDuration('')
+        setNavigate(null)
+    }
+
     return (
         <div className='details '>
             <div className='d-flex align-items-center justify-content-between'>
                 <div className='d-flex details__header align-items-center'>
                 <p>{data.name}</p>
                 </div>
-                <img src="https://i.imgur.com/efx42hL.png" alt="" className='details__close' onClick={()=>setSelected(null)}/>
+                <img src="https://i.imgur.com/efx42hL.png" alt="" className='details__close' onClick={clearUp}/>
             </div>
             <div className='d-flex details__available'>
                 {/*<p>50/ 0.5H</p>*/}
@@ -21,7 +29,7 @@ function Details({setSelected,data,availbility}){
                 </div>
             </div>
             <div className='details__icon-section d-flex justify-content-arouned align-items-center'>
-                <p className='btn-main'>導航</p>
+                <p className='btn-main' onClick={()=>{setNavigate(1)}}>開車 {duration}</p>
                 <p>{isMachine? '機械':'平面'}</p>
                 {data.totalmotor>0 && <div>
                     <img src="https://i.imgur.com/XrYKfB8.png" alt="" className='details__icon-section__icon' />

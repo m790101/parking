@@ -1,6 +1,6 @@
 import React from 'react'
 import './../style/home.scss'
-import { useJsApiLoader, GoogleMap, Marker } from '@react-google-maps/api'
+import { useJsApiLoader, GoogleMap, Marker,DirectionsRenderer } from '@react-google-maps/api'
 import { useCallback, useState, useRef, useEffect } from 'react'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
 import mapStyle from '../mapStyle'
@@ -34,13 +34,16 @@ const Map = () => {
   const [searchMarkers, setSearchMarkers] = useState([])
   const [parkingData,setParkingData] =  useState([])
   const [availbility,setAvailbility] = useState([])
+  const [directionResponse,setDirectionResponse] = useState(null)
+  const [duration,setDuration] = useState('')
+  const [navigate,setNavigate] = useState(null)
   const mapRef = useRef()
   const onMapLoad = useCallback(map => {
     mapRef.current = map
 
   }, [])
   const [selected, setSelected] = useState(null)
-
+console.log(navigate)
   const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(17);
@@ -81,7 +84,7 @@ const Map = () => {
       data.data.park.map(async(p)=>{
         const response = await getGeocode({ address: p.address })
         const { lat, lng } = await getLatLng(response[0]);
-        initialMarkers(p,lat,lng)
+         initialMarkers(p,lat,lng)
     })
     console.log('hiys')
   }
@@ -90,8 +93,20 @@ const Map = () => {
     initialLocate()
   })
 }, [initialLocate,initialMarkers])
+// eslint-disable-next-line no-undef
+//direction
+async function fetchDirections(marker){
 
-
+const directionsService = new window.google.maps.DirectionsService()
+const results = await directionsService.route({
+origin: {lat: currentMarker[0].lat, lng:  currentMarker[0].lng},
+destination: marker.name,
+// eslint-disable-next-line no-undef
+travelMode: window.google.maps.TravelMode.DRIVING
+})
+setDirectionResponse(results)
+setDuration(results.routes[0].legs[0].duration.text)
+}
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
@@ -106,7 +121,6 @@ const Map = () => {
 
   return (
       <div className='map'>
-
          <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers}  />
          <div className='try'>
          <GoogleMap
@@ -158,6 +172,7 @@ const Map = () => {
           }}
           onClick={() => {
             setSelected(marker)
+            fetchDirections(marker)
           }}
         />)}
           
@@ -172,14 +187,18 @@ const Map = () => {
           }}
           onClick={() => {
             setSelected(marker)
+            fetchDirections(marker)
           }}
         />)}
-
+          {navigate && <DirectionsRenderer directions={directionResponse}/>}
         </GoogleMap>
 
 
          </div>
-        {selected && <Details setSelected={setSelected} data={selected} availbility={availbility}/>}
+        {selected && <Details setSelected={setSelected} data={selected}
+        availbility={availbility} setDirectionResponse={setDirectionResponse}
+        duration={duration} setDuration={setDuration} setNavigate={setNavigate}
+        />}
       </div>
 
   )
