@@ -4,7 +4,6 @@ import '../style/details.scss'
 function Details({setSelected,data,availbility,setDirectionResponse,duration,setDuration, setNavigate}){
     //let time = new Date().getHours()
     let availableNum = availbility.filter(a=>a.id === data.id)
-    let day = new Date().getDay()
     let isMachine = data.summary.includes("塔台式")
     function clearUp(){
         setSelected(null)
@@ -45,7 +44,7 @@ function Details({setSelected,data,availbility,setDirectionResponse,duration,set
                     <li>費率: <span className='fw-light'>{data.payex}</span></li>
                     <li>地址: <span className='fw-light'>{data.address}</span></li>
                     <li>電話: <span className='fw-light'>{data.tel}</span></li>
-                    <li>備註: <span className='fw-light'>{day}</span></li>
+                    <li>備註: <span className='fw-light'></span></li>
     </ul>}
         <p className='details__footer fs-14'>相關停車須知皆以現場公告為準</p>
         </div>

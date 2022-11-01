@@ -248,13 +248,9 @@ textarea {
   }
 }
 
-.btn-main:hover {
-  background-color: rgb(227, 85, 20);
-  color: white;
-}
 
 .btn-main:active {
-  background-color: rgb(227, 85, 20);
+  background-color: var(--active-color);
   color: white;
 }
 

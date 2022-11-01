@@ -43,7 +43,6 @@ const Map = () => {
 
   }, [])
   const [selected, setSelected] = useState(null)
-console.log(navigate)
   const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(17);
@@ -102,8 +101,10 @@ const results = await directionsService.route({
 origin: {lat: currentMarker[0].lat, lng:  currentMarker[0].lng},
 destination: marker.name,
 // eslint-disable-next-line no-undef
-travelMode: window.google.maps.TravelMode.DRIVING
+travelMode: window.google.maps.TravelMode.DRIVING,
 })
+
+
 setDirectionResponse(results)
 setDuration(results.routes[0].legs[0].duration.text)
 }
@@ -190,7 +191,7 @@ setDuration(results.routes[0].legs[0].duration.text)
             fetchDirections(marker)
           }}
         />)}
-          {navigate && <DirectionsRenderer directions={directionResponse}/>}
+          {navigate && <DirectionsRenderer directions={directionResponse} options={{suppressMarkers: true}}/>}
         </GoogleMap>
 
 
