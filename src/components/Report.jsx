@@ -1,13 +1,17 @@
-import React from "react"
+import React, { useRef, useState } from "react"
 import '../style/report.scss'
 
 import Swal from 'sweetalert2'
 
 function Report({ setIsReporting }) {
-
+    const [text,setText]=useState('')
     function clearUp() {
         setIsReporting(null)
     }
+function handleTextChange(e){
+    setText(e.target.value.trim())
+}
+console.log(text)
 function submit(){
     Swal.fire({
   icon: 'success',
@@ -25,8 +29,8 @@ setIsReporting(null)
                     <p className="report__header__title text-center">回報錯誤</p>
                     <img src="https://i.imgur.com/efx42hL.png" alt="" className='report__header__close' onClick={clearUp} />
                 </div>
-                <textarea name="" id="" cols="15" rows="10" className="report__text" placeholder="請從這裡輸入..."></textarea>
-                <button className="report__btn" onClick={submit}>送出</button>
+                <textarea name="" id="" cols="15" rows="10" className="report__text" placeholder="請從這裡輸入..." onChange={handleTextChange}></textarea>
+                <button className="report__btn" onClick={submit} disabled={text.length <= 0}>送出</button>
             </div>
         </div>
 
