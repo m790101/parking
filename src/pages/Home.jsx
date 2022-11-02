@@ -14,7 +14,11 @@ import Help from '../components/Help'
 import HelpIcon from '../components/HelpIcon'
 
 
-
+const markerIcon = {
+  black:'https://i.imgur.com/FBoOQuh.png',
+  yellow:'https://i.imgur.com/lKDCX1d.png',
+  red:'https://i.imgur.com/M7l0UWq.png'
+}
 let availableDb = available.data.park
 let parkingDb = db.data.park
 parkingDb = parkingDb.map((park) => {
@@ -179,7 +183,7 @@ setDuration(results.routes[0].legs[0].duration.text)
           key={marker.id}
           position={{ lat: marker.lat, lng: marker.lng }}
           icon={{
-            url: marker.cap > 0.1?'https://i.imgur.com/FBoOQuh.png':'https://i.imgur.com/lKDCX1d.png',
+            url: marker.cap === 0 ? markerIcon.red:marker.cap > 0.1? markerIcon.black:markerIcon.yellow,
             scaledSize: new window.google.maps.Size(30, 30),
             origin: new window.google.maps.Point(0, 0),
             anchor: new window.google.maps.Point(15, 11)
@@ -194,7 +198,7 @@ setDuration(results.routes[0].legs[0].duration.text)
           key={marker.id}
           position={{ lat: marker.lat, lng: marker.lng }}
           icon={{
-            url: marker.cap > 0.1?'https://i.imgur.com/FBoOQuh.png':'https://i.imgur.com/lKDCX1d.png',
+            url: marker.cap === 0?markerIcon.red:marker.cap > 0.1? markerIcon.black:markerIcon.yellow,
             scaledSize: new window.google.maps.Size(30, 30),
             origin: new window.google.maps.Point(0, 0),
             anchor: new window.google.maps.Point(15, 11)
