@@ -10,6 +10,8 @@ import db from '../db.json'
 import available from '../available.json'
 import Navbar from '../components/Navbar'
 import OpenDisplay from '../components/OpenDisplay'
+import Help from '../components/Help'
+import HelpIcon from '../components/HelpIcon'
 
 
 
@@ -39,13 +41,16 @@ const Map = () => {
   const [duration,setDuration] = useState('')
   const [navigate,setNavigate] = useState(null)
   const [isLoading,setIsLoading] = useState(1)
+  const[isHelp,setIsHelp] = useState(null)
+  const [selected, setSelected] = useState(null)
   const mapRef = useRef()
   const onMapLoad = useCallback(map => {
     mapRef.current = map
 
   }, [])
-  const [selected, setSelected] = useState(null)
+
   const panTo = useCallback(({ lat, lng }) => {
+    
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(17);
 
@@ -129,7 +134,7 @@ setDuration(results.routes[0].legs[0].duration.text)
   return (
       <div className='map'>
 
-         <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers}  />
+         <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} setIsLoading={setIsLoading} />
          <div className='try'>
          <GoogleMap
           className='google-map'
@@ -149,7 +154,7 @@ setDuration(results.routes[0].legs[0].duration.text)
         {isLoading && <OpenDisplay></OpenDisplay>}
           <Navbar/>
          <Search panTo={panTo} setSearchMarkers={setSearchMarkers} />
-         
+         <HelpIcon setIsHelp={setIsHelp}/>
          {currentMarker.map(marker => <Marker
           key={marker.id}
           position={{ lat: marker.lat, lng: marker.lng }}
@@ -208,8 +213,10 @@ setDuration(results.routes[0].legs[0].duration.text)
         availbility={availbility} setDirectionResponse={setDirectionResponse}
         duration={duration} setDuration={setDuration} setNavigate={setNavigate}
         />}
+           {isHelp && <Help setIsHelp={setIsHelp}/>}
       </div>
-
+      
+       
   )
 
 
@@ -281,11 +288,12 @@ setDuration(results.routes[0].legs[0].duration.text)
   }
 }
 
-function Locate({ panTo,setCurrentMarkers,setSearchMarkers}) {
+function Locate({ panTo,setCurrentMarkers,setSearchMarkers,setIsLoading}) {
   return (
     <div
     className='locateCurrentButton cursor-pointer '
       onClick={() => {
+        setIsLoading(1)
         navigator.geolocation.getCurrentPosition(
           (position) => {
             panTo({
@@ -297,6 +305,7 @@ function Locate({ panTo,setCurrentMarkers,setSearchMarkers}) {
               lng: position.coords.longitude,
               id: new Date().getTime()
             }])
+            setIsLoading(null)
             setSearchMarkers([])
           },
           () => null
