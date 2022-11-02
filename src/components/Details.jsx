@@ -28,7 +28,7 @@ function Details({setSelected,data,availbility,setDirectionResponse,duration,set
                 </div>
             </div>
             <div className='details__icon-section d-flex justify-content-arouned align-items-center'>
-                <p className='btn-main' onClick={()=>{setNavigate(1)}}>開車 {duration}</p>
+                <p className='btn-main cursor-pointer' onClick={()=>{setNavigate(1)}}>開車 {duration}</p>
                 <p>{isMachine? '機械':'平面'}</p>
                 {data.totalmotor>0 && <div>
                     <img src="https://i.imgur.com/XrYKfB8.png" alt="" className='details__icon-section__icon' />

@@ -9,6 +9,7 @@ import axios from 'axios'
 import db from '../db.json'
 import available from '../available.json'
 import Navbar from '../components/Navbar'
+import OpenDisplay from '../components/OpenDisplay'
 
 
 
@@ -37,6 +38,7 @@ const Map = () => {
   const [directionResponse,setDirectionResponse] = useState(null)
   const [duration,setDuration] = useState('')
   const [navigate,setNavigate] = useState(null)
+  const [isLoading,setIsLoading] = useState(1)
   const mapRef = useRef()
   const onMapLoad = useCallback(map => {
     mapRef.current = map
@@ -48,13 +50,15 @@ const Map = () => {
     mapRef.current.setZoom(17);
 
   }, []);
-  const initialMarkers = useCallback((p,lat,lng)=>{
+  const initialMarkers = useCallback((p,lat,lng,availableDb)=>{
     setParkingMarkers((currents)=>{
       currents = currents.filter(current=>current.id !== p.id)
+      let a = availableDb.filter(a=> p.id === a.id)
       return [...currents,{
         ...p,
         lat,
-        lng
+        lng,
+        cap:(a[0].availablecar/p.totalcar)
       }]
     })
   },[])
@@ -71,6 +75,7 @@ const Map = () => {
         lng: position.coords.longitude,
         id: new Date().getTime()
       }])
+      setIsLoading(null)
     },
     () => null
   )}, [panTo]) 
@@ -83,7 +88,7 @@ const Map = () => {
       data.data.park.map(async(p)=>{
         const response = await getGeocode({ address: p.address })
         const { lat, lng } = await getLatLng(response[0]);
-         initialMarkers(p,lat,lng)
+         initialMarkers(p,lat,lng,availableDb)
     })
     console.log('hiys')
   }
@@ -91,8 +96,9 @@ const Map = () => {
   .then(()=>{
     initialLocate()
   })
+  .then(()=>{})
 }, [initialLocate,initialMarkers])
-// eslint-disable-next-line no-undef
+
 //direction
 async function fetchDirections(marker){
 
@@ -100,7 +106,7 @@ const directionsService = new window.google.maps.DirectionsService()
 const results = await directionsService.route({
 origin: {lat: currentMarker[0].lat, lng:  currentMarker[0].lng},
 destination: marker.name,
-// eslint-disable-next-line no-undef
+
 travelMode: window.google.maps.TravelMode.DRIVING,
 })
 
@@ -122,6 +128,7 @@ setDuration(results.routes[0].legs[0].duration.text)
 
   return (
       <div className='map'>
+
          <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers}  />
          <div className='try'>
          <GoogleMap
@@ -139,6 +146,7 @@ setDuration(results.routes[0].legs[0].duration.text)
           }}
           onLoad={onMapLoad}
         >
+        {isLoading && <OpenDisplay></OpenDisplay>}
           <Navbar/>
          <Search panTo={panTo} setSearchMarkers={setSearchMarkers} />
          
@@ -181,7 +189,7 @@ setDuration(results.routes[0].legs[0].duration.text)
           key={marker.id}
           position={{ lat: marker.lat, lng: marker.lng }}
           icon={{
-            url: 'https://i.imgur.com/FBoOQuh.png',
+            url: marker.cap > 0.1?'https://i.imgur.com/FBoOQuh.png':'https://i.imgur.com/lKDCX1d.png',
             scaledSize: new window.google.maps.Size(30, 30),
             origin: new window.google.maps.Point(0, 0),
             anchor: new window.google.maps.Point(15, 11)
