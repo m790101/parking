@@ -12,7 +12,7 @@ import Navbar from '../components/Navbar'
 import OpenDisplay from '../components/OpenDisplay'
 import Help from '../components/Help'
 import HelpIcon from '../components/HelpIcon'
-
+import Report from '../components/Report'
 
 const markerIcon = {
   black:'https://i.imgur.com/FBoOQuh.png',
@@ -47,6 +47,7 @@ const Map = () => {
   const [isLoading,setIsLoading] = useState(1)
   const[isHelp,setIsHelp] = useState(null)
   const [selected, setSelected] = useState(null)
+  const [isReporting,setIsReporting] = useState(null)
   const mapRef = useRef()
   const onMapLoad = useCallback(map => {
     mapRef.current = map
@@ -159,6 +160,7 @@ setDuration(results.routes[0].legs[0].duration.text)
           <Navbar/>
          <Search panTo={panTo} setSearchMarkers={setSearchMarkers} />
          <HelpIcon setIsHelp={setIsHelp}/>
+         {isReporting && <Report setIsReporting={setIsReporting}/>}
          {currentMarker.map(marker => <Marker
           key={marker.id}
           position={{ lat: marker.lat, lng: marker.lng }}
@@ -216,6 +218,7 @@ setDuration(results.routes[0].legs[0].duration.text)
         {selected && <Details setSelected={setSelected} data={selected}
         availbility={availbility} setDirectionResponse={setDirectionResponse}
         duration={duration} setDuration={setDuration} setNavigate={setNavigate}
+        setIsReporting={setIsReporting}
         />}
            {isHelp && <Help setIsHelp={setIsHelp}/>}
       </div>
