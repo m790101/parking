@@ -8,14 +8,16 @@ function Report({ setIsReporting }) {
     function clearUp() {
         setIsReporting(null)
     }
-/*function submit(){
+function submit(){
     Swal.fire({
-        title: 'Error!',
-        text: 'Do you want to continue',
-        icon: 'error',
-        confirmButtonText: 'Cool'
-      })
-}*/
+  icon: 'success',
+  title: '成功發送，謝謝你的回饋!',
+  width:'300px',
+  showConfirmButton: false,
+  timer: 1500
+})
+setIsReporting(null)
+}
     return (
         <div className="bg">
             <div className="report d-flex flex-column">
@@ -24,7 +26,7 @@ function Report({ setIsReporting }) {
                     <img src="https://i.imgur.com/efx42hL.png" alt="" className='report__header__close' onClick={clearUp} />
                 </div>
                 <textarea name="" id="" cols="15" rows="10" className="report__text" placeholder="請從這裡輸入..."></textarea>
-                <button className="report__btn">送出</button>
+                <button className="report__btn" onClick={submit}>送出</button>
             </div>
         </div>
 
