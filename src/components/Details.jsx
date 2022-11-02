@@ -1,7 +1,7 @@
 import React from 'react'
 import '../style/details.scss'
 
-function Details({setSelected,data,availbility,setDirectionResponse,duration,setDuration, setNavigate}){
+function Details({setSelected,data,availbility,setDirectionResponse,duration,setDuration, setNavigate,setIsReporting}){
     //let time = new Date().getHours()
     let availableNum = availbility.filter(a=>a.id === data.id)
     let isMachine = data.summary.includes("塔台式")
@@ -21,14 +21,15 @@ function Details({setSelected,data,availbility,setDirectionResponse,duration,set
                 </div>
                 <img src="https://i.imgur.com/efx42hL.png" alt="" className='details__close' onClick={clearUp}/>
             </div>
-            <div className='d-flex details__available'>
+            <div className='d-flex details__available align-items-center'>
                 {/*<p>50/ 0.5H</p>*/}
                 <div>
                 <span>總車位:  {data.totalcar} </span><span>空位數:  {availableNum[0].availablecar}  </span>
+                <button className='details__available__report-btn fs-14' onClick={()=>setIsReporting(1)}>回報錯誤</button>
                 </div>
             </div>
             <div className='details__icon-section d-flex justify-content-arouned align-items-center'>
-                <p className='btn-main' onClick={()=>{setNavigate(1)}}>開車 {duration}</p>
+                <button className='btn-main cursor-pointer' onClick={()=>{setNavigate(1)}}>開車 {duration}</button>
                 <p>{isMachine? '機械':'平面'}</p>
                 {data.totalmotor>0 && <div>
                     <img src="https://i.imgur.com/XrYKfB8.png" alt="" className='details__icon-section__icon' />
@@ -50,5 +51,8 @@ function Details({setSelected,data,availbility,setDirectionResponse,duration,set
         </div>
     )
 }
+
+
+
 
 export default Details

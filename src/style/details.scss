@@ -20,10 +20,17 @@
         width:100%;
         height:55px;
         gap:32px;
+        padding:40px 0 ;
         padding-left: 16px;
     }
     &__available{
         gap:25px;
+        &__report-btn{
+            margin-left: 10px;
+            border: 1px solid var(--5-gray);
+            border-radius: 15px;
+            height:25px;
+        }
     }
     &__footer{
         text-align:center;
