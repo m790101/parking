@@ -7,7 +7,7 @@ function Help({setIsHelp}) {
     }
 
     return (
-        <div className='help '>
+        <div className='help'>
             <div className='d-flex align-items-center justify-content-between'>
                 <div className='d-flex help__header align-items-center'>
                     <p>需要幫助嗎？</p>
