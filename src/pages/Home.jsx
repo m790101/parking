@@ -272,7 +272,7 @@ setDuration(results.routes[0].legs[0].duration.text)
 
         return (
 
-          <li key={place_id} onClick={handleSelect(suggestion)} className="suggestion__item" >
+          <li key={place_id} onClick={handleSelect(suggestion)} className="suggestion__item cursor-pointer " >
             <strong>{main_text}</strong> <small>{secondary_text}</small>
           </li>
         );
@@ -299,6 +299,7 @@ function Locate({ panTo,setCurrentMarkers,setSearchMarkers,setIsLoading}) {
   return (
     <div
     className='locateCurrentButton cursor-pointer '
+    data-testid='locate'
       onClick={() => {
         setIsLoading(1)
         navigator.geolocation.getCurrentPosition(

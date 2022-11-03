@@ -38,9 +38,11 @@
         background-color: var(--primary-color);
         color:var(--white);
         height:30px;
+        &:disabled{
+            background-color: var(--5-gray);
+        }
     }
 }
-
 
 @media(min-width:750px){
     .report{
