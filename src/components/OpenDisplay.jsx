@@ -3,7 +3,7 @@ import '../style/openDisplay.scss'
 function OpenDisplay(){
     return (
     <>
-        <div className="opening">
+        <div className="opening" data-testid='open'>
             <img src="https://i.imgur.com/b6dyTrY.png" alt="" className="opening__pic"/>
         </div>
     </>

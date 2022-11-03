@@ -5,7 +5,7 @@ import '../style/navbar.scss'
 
 function Navbar() {
     return (
-        <div >
+        <div data-testid='navbar'>
             <div className='nav-phone container'>
                 <ul className='nav-phone__panel d-flex align-items-center justify-content-evenly'>
                     <Link to='/'>

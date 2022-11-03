@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useState } from "react"
 import '../style/report.scss'
 
 import Swal from 'sweetalert2'
@@ -11,7 +11,7 @@ function Report({ setIsReporting }) {
 function handleTextChange(e){
     setText(e.target.value.trim())
 }
-console.log(text)
+
 function submit(){
     Swal.fire({
   icon: 'success',
