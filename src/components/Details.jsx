@@ -4,7 +4,7 @@ import { useState,useRef } from 'react'
 import Swal from 'sweetalert2'
 
 
-function Details({ setSelected, data, availbility, setDirectionResponse, duration, setDuration, setNavigate, setIsReporting }) {
+function Details({ setSelected, data, availbility, setDirectionResponse, duration, setDuration, setNavigate, setIsReporting}) {
     //let time = new Date().getHours()
     let availableNum = availbility.filter(a => a.id === data.id)
     let isMachine = data.summary.includes("塔台式")
@@ -86,7 +86,7 @@ function clearUp() {
 
             </div>
 
-            {<ul className='fs-14'>
+            {<ul className='details__detail-section'>
                 <li>營業時間: <span className='fw-light'>{data.serviceTime}</span></li>
                 <li>費率: <span className='fw-light'>{data.payex}</span></li>
                 <li>地址: <span className='fw-light'>{data.address}</span></li>

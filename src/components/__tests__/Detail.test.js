@@ -1,6 +1,8 @@
-import { render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Details from '../Details'
+
+
 const data = {
     AED_Equipment:"0",
     Accessibility_Elevator:"0",
@@ -26,48 +28,13 @@ const data = {
 }
 const availbility = [
     {id: '001', availablecar: 134, availablemotor: 57, availablebus: -9},
-    {id: '002', availablecar: 0, availablemotor: -9, availablebus: -9},
-    {id: '003', availablecar: 44, availablemotor: 82, availablebus: 0, ChargeStation: ''},
-    {id: '004', availablecar: 145, availablemotor: -9, availablebus: -9, ChargeStation:' '},
-    {id: '005', availablecar: 59, availablemotor: 35, availablebus: -9, ChargeStation: ''},
-    {id: '006', availablecar: 0, availablemotor: 62, availablebus: -9},
-    {id: '007', availablecar: 90, availablemotor: 99, availablebus: -9, ChargeStation: ''},
-    {id: '008', availablecar: 28, availablemotor: 1, availablebus: -9},
-    {id: '014', availablecar: 50, availablemotor: 1, availablebus: 0, ChargeStation: ''},
-    {id: '015', availablecar: 137, availablemotor: 508, availablebus: -9, ChargeStation: ''},
-    {id: '016', availablecar: 11, availablemotor: -9, availablebus: -9},
-    {id: '018', availablecar: 624, availablemotor: 94, availablebus: -9, ChargeStation: ''},
-    {id: '019', availablecar: 3, availablemotor: -9, availablebus: -9, ChargeStation: ''},
-    {id: '020', availablecar: 129, availablemotor: -9, availablebus: -9, ChargeStation: ''},
-    {id: '021', availablecar: 83, availablemotor: -9, availablebus: -9, ChargeStation: ''},
-    {id: '022', availablecar: 3, availablemotor: -9, availablebus: -9, ChargeStation: ''},
-    {id: '023', availablecar: 109, availablemotor: -9, availablebus: -9, ChargeStation: ''} ,
-    {id: '024', availablecar: 47, availablemotor: -9, availablebus: -9, ChargeStation: ''},
-    {id: '025', availablecar: 79, availablemotor: 0, availablebus: -9, ChargeStation: ''},
-    {id: '027', availablecar: 463, availablemotor: -9, availablebus: -9, ChargeStation: ''},
-    {id: '028', availablecar: 0, availablemotor: -9, availablebus: -9, ChargeStation: ''},
-    {id: '029', availablecar: 72, availablemotor: 35, availablebus: -9, ChargeStation: ''},
-    {id: '030', availablecar: 1, availablemotor: -9, availablebus: -9, ChargeStation: ''},
-    {id: '031', availablecar: 15, availablemotor: -9, availablebus: -9, ChargeStation: ''},
-    {id: '032', availablecar: 113, availablemotor: -9, availablebus: -9, ChargeStation: ''},
-    {id: '033', availablecar: 18, availablemotor: -9, availablebus: -9},
-    {id: '034', availablecar: 36, availablemotor: -9, availablebus: -9} ,
-    {id: '035', availablecar: 8, availablemotor: -9, availablebus: -9, ChargeStation: '{…}'},
-    {id: '036', availablecar: 60, availablemotor: -9, availablebus: -9, ChargeStation: '{…}'},
-    {id: '037', availablecar: 61, availablemotor: -9, availablebus: -9, ChargeStation: '{…}'},
-    {id: '038', availablecar: 5, availablemotor: -9, availablebus: -9},
-    {id: '039', availablecar: 15, availablemotor: -9, availablebus: -9},
-    {id: '040', availablecar: 57, availablemotor: -9, availablebus: -9, ChargeStation: '{…}'},
-    {id: '041', availablecar: 11, availablemotor: 0, availablebus: -9, ChargeStation: '{…}'},
-    {id: '042', availablecar: 20, availablemotor: 3, availablebus: -9, ChargeStation: '{…}'},
-    {id: '043', availablecar: 123, availablemotor: 0, availablebus: -9, ChargeStation: '{…}'},
-    {id: '044', availablecar: 106, availablemotor: 50, availablebus: -9, ChargeStation: '{…}'}
 ]
 const duration = '7分鐘'
-
+const mockSetNavigate = jest.fn()
+beforeEach(cleanup)
 test('should render Details component', () => {
    
-    render(<Details data={data} availbility={availbility} duration={duration} />)
+    render(<Details data={data} availbility={availbility} duration={duration} setNavigate={mockSetNavigate}/>)
     const DetailElement = screen.getByTestId('detail-button')
     expect(DetailElement).toBeInTheDocument();
 })
@@ -76,6 +43,35 @@ test('should render Details component', () => {
 test('should show how many min from location', () => {
    
     render(<Details data={data} availbility={availbility} duration={duration} />)
-    const DetailElement = screen.getByTestId('detail-button').textContent
-    expect(DetailElement).toMatch(/開車 7分鐘/)
+    const DetailButton = screen.getByTestId('detail-button').textContent
+    expect(DetailButton).toMatch(/開車 7分鐘/)
 })
+
+/*test('should get number from press 開車Ｘ分鐘 button', async() => {
+    render(<Details data={data} availbility={availbility} duration={duration} setNavigate={mockSetNavigate}/>)
+    const count = jest.fn()
+    const DetailButton = await screen.findByTestId('detail-button')
+    fireEvent.click(DetailButton)
+    expect(count).toHaveBeenCalled()
+
+    })
+
+*/
+
+
+
+ /*const count = jest.fn().mockReturnValue(1)/*.mockReturnValue({
+     json:{
+        id: 1,
+        num:1,
+        availablecar:20,
+ }
+})
+ const setNavigate = jest.fn().mockReturnValue({navigate:1})
+
+    render(<Details data={data} availbility={availbility} duration={duration} />)
+    const DetailButton = screen.getByTestId('detail-button')
+    fireEvent.click(DetailButton)
+    expect(count).toHaveBeenCalled(1)
+    expect(setNavigate).toHaveBeenCalled(1)
+})*/

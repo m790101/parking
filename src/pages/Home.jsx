@@ -13,6 +13,7 @@ import OpenDisplay from '../components/OpenDisplay'
 import Help from '../components/Help'
 import HelpIcon from '../components/HelpIcon'
 import Report from '../components/Report'
+import Locate from '../components/Locate'
 
 const markerIcon = {
   black:'https://i.imgur.com/FBoOQuh.png',
@@ -142,6 +143,7 @@ setDuration(results.routes[0].legs[0].duration.text)
          <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} setIsLoading={setIsLoading} />
          <div className='try'>
          <GoogleMap
+         data-testid='google-map'
           className='google-map'
           center={center}
           zoom={13}
@@ -295,37 +297,6 @@ setDuration(results.routes[0].legs[0].duration.text)
   }
 }
 
-function Locate({ panTo,setCurrentMarkers,setSearchMarkers,setIsLoading}) {
-  return (
-    <div
-    className='locateCurrentButton cursor-pointer '
-    data-testid='locate'
-      onClick={() => {
-        setIsLoading(1)
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            panTo({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            });
-            setCurrentMarkers(() => [{
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-              id: new Date().getTime()
-            }])
-            setIsLoading(null)
-            setSearchMarkers([])
-          },
-          () => null
-        );
 
-      }
-      }
-
-    >
-      <div className='locateCurrentButton__icon'></div>
-    </div>
-  );
-}
 
 export default Map
