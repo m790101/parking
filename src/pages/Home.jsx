@@ -14,7 +14,7 @@ import Help from '../components/Help'
 import HelpIcon from '../components/HelpIcon'
 import Report from '../components/Report'
 import Locate from '../components/Locate'
-
+import Search from '../components/Search'
 const markerIcon = {
   black:'https://i.imgur.com/FBoOQuh.png',
   yellow:'https://i.imgur.com/lKDCX1d.png',
@@ -140,7 +140,7 @@ setDuration(results.routes[0].legs[0].duration.text)
   return (
       <div className='map'>
 
-         <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} setIsLoading={setIsLoading} />
+         <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} setIsLoading={setIsLoading} getLatLng={getLatLng}/>
          <div className='try'>
          <GoogleMap
          data-testid='google-map'
@@ -160,7 +160,7 @@ setDuration(results.routes[0].legs[0].duration.text)
         >
         {isLoading && <OpenDisplay></OpenDisplay>}
           <Navbar/>
-         <Search panTo={panTo} setSearchMarkers={setSearchMarkers} />
+         <Search panTo={panTo} setSearchMarkers={setSearchMarkers} usePlacesAutocomplete={usePlacesAutocomplete} getGeocode={getGeocode} getLatLng={getLatLng}/>
          <HelpIcon setIsHelp={setIsHelp}/>
          {isReporting && <Report setIsReporting={setIsReporting}/>}
          {currentMarker.map(marker => <Marker
@@ -227,74 +227,6 @@ setDuration(results.routes[0].legs[0].duration.text)
       
        
   )
-
-
-  function Search({ panTo, setSearchMarkers }) {
-    const {
-      ready,
-      value,
-      suggestions: { status, data },
-      setValue,
-      clearSuggestions,
-    } = usePlacesAutocomplete({
-      requestOptions: {
-        //location:{lat: ()=>25.03, lng: ()=>121.554},
-        //radius:200*1000
-      }
-    })
-
-    const handleInput = (e) => {
-      setValue(e.target.value);
-      //e.preventDefalut()
-    }
-
-    const handleSelect =
-      ({ description }) =>
-        async () => {
-          setValue(description, false);
-          clearSuggestions();
-          const response = await getGeocode({ address: description })
-          const { lat, lng } = await getLatLng(response[0]);
-          panTo({ lat, lng })
-          setSearchMarkers(()=> [{
-            lat: lat,
-            lng: lng,
-            id: new Date().getTime()
-          }])
-
-        };
-
-
-    const renderSuggestions = () =>
-      data.map((suggestion) => {
-        const {
-          place_id,
-          structured_formatting: { main_text, secondary_text },
-        } = suggestion;
-
-        return (
-
-          <li key={place_id} onClick={handleSelect(suggestion)} className="suggestion__item cursor-pointer " >
-            <strong>{main_text}</strong> <small>{secondary_text}</small>
-          </li>
-        );
-      })
-
-    return (
-      <div>
-        <div className='box'>
-          <input
-            className='search'
-            value={value}
-            onChange={handleInput}
-            disabled={!ready}
-            placeholder="搜尋目標地點"
-          />
-        </div>
-        {status === "OK" && <ul className="suggestion">{renderSuggestions()}</ul>}
-      </div>
-    )
-  }
 }
 
 

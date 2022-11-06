@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Details from '../Details'
 
+const mockSetNavigate = jest.fn()
 
 const data = {
     AED_Equipment:"0",
@@ -30,48 +31,12 @@ const availbility = [
     {id: '001', availablecar: 134, availablemotor: 57, availablebus: -9},
 ]
 const duration = '7分鐘'
-const mockSetNavigate = jest.fn()
+
 beforeEach(cleanup)
 test('should render Details component', () => {
    
     render(<Details data={data} availbility={availbility} duration={duration} setNavigate={mockSetNavigate}/>)
-    const DetailElement = screen.getByTestId('detail-button')
+    const DetailElement = screen.getByTestId('navigate-button')
     expect(DetailElement).toBeInTheDocument();
 })
 
-
-test('should show how many min from location', () => {
-   
-    render(<Details data={data} availbility={availbility} duration={duration} />)
-    const DetailButton = screen.getByTestId('detail-button').textContent
-    expect(DetailButton).toMatch(/開車 7分鐘/)
-})
-
-/*test('should get number from press 開車Ｘ分鐘 button', async() => {
-    render(<Details data={data} availbility={availbility} duration={duration} setNavigate={mockSetNavigate}/>)
-    const count = jest.fn()
-    const DetailButton = await screen.findByTestId('detail-button')
-    fireEvent.click(DetailButton)
-    expect(count).toHaveBeenCalled()
-
-    })
-
-*/
-
-
-
- /*const count = jest.fn().mockReturnValue(1)/*.mockReturnValue({
-     json:{
-        id: 1,
-        num:1,
-        availablecar:20,
- }
-})
- const setNavigate = jest.fn().mockReturnValue({navigate:1})
-
-    render(<Details data={data} availbility={availbility} duration={duration} />)
-    const DetailButton = screen.getByTestId('detail-button')
-    fireEvent.click(DetailButton)
-    expect(count).toHaveBeenCalled(1)
-    expect(setNavigate).toHaveBeenCalled(1)
-})*/
