@@ -13,11 +13,3 @@ test('should render Locate component',()=>{
     const searchElement = screen.getByTestId('search')
     expect(searchElement).toBeInTheDocument();
 })
-
-/*test('should call panto after click',()=>{
-    render(<Locate  panto={panTo} setIsLoading={setIsLoading} />)
-    const locateElement = screen.getByTestId('locate')
-fireEvent.click(locateElement)
-    expect(mockGeolocation.getCurrentPosition).toHaveBeenCalled()
-    expect(setIsLoading).toHaveBeenCalled()
-})*/

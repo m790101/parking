@@ -12,7 +12,6 @@
         //radius:200*1000
       }
     })
-    console.log(usePlacesAutocomplete())
     const handleInput = (e) => {
       setValue(e.target.value);
       //e.preventDefalut()

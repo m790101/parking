@@ -138,7 +138,7 @@ setDuration(results.routes[0].legs[0].duration.text)
   
 
   return (
-      <div className='map'>
+      <div className='map' data-testid='map'>
 
          <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} setIsLoading={setIsLoading} getLatLng={getLatLng}/>
          <div className='try'>
