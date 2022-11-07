@@ -3,7 +3,7 @@ import '../style/help.scss'
 
 function Help({setIsHelp}) {
     function clearUp() {
-        setIsHelp(null)
+        setIsHelp(false)
     }
 
     return (

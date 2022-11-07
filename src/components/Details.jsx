@@ -5,7 +5,6 @@ import Swal from 'sweetalert2'
 import DetailNavigateButton from '../components/DetailNavigateButton'
 
 
-
 function Details({ setSelected, data, availbility, setDirectionResponse, duration, setDuration, setNavigate, setIsReporting}) {
     //let time = new Date().getHours()
     let availableNum = availbility.filter(a => a.id === data.id)
@@ -60,17 +59,39 @@ function clearUp() {
     setNavigate(null)
     clearInterval(timer.current)
 }
+/*if(data.FareInfo){
+    if(day > 0 && day <= 5){
+        for (let i = 0; i < data.FareInfo.WorkingDay.length; i++) {
+            let timeFix = data.FareInfo.WorkingDay[i].Period.split('~')
+            if (isInRange(time, timeFix)) {
+              fare = data.FareInfo.WorkingDay[i].Fare
+           
+            }
+          }
+    }
+    if(day === 0 || day === 6){
+        for (let i = 0; i < data.FareInfo.Holiday.length; i++) {
+            let timeFix = data.FareInfo.Holiday[i].Period.split('~')
+            if (isInRange(time, timeFix)) {           
+              fare=data.FareInfo.Holiday[i].Fare
+             
+            }
+          }
+    }
+}*/
+
 
     return (
         <div className='details' >
             <div className='d-flex align-items-center justify-content-between'>
                 <div className='d-flex details__header align-items-center'>
-                    <p>{data.name}</p>
+                    <p className='fw-bold'>{data.name}</p>
+                    {<p>{data.fare?data.fare:'無'}/H</p>}
                 </div>
                 <img src="https://i.imgur.com/efx42hL.png" alt="" className='details__close' onClick={()=>{clearUp()}} />
             </div>
             <div className='d-flex details__available align-items-center'>
-                {/*<p>50/ 0.5H</p>*/}
+    
                 <div>
                     <span>總車位:  {data.totalcar} </span><span>空位數:  {availableNum[0].availablecar}  </span>
                     <button className='details__available__report-btn fs-14' onClick={() => setIsReporting(1)}>回報錯誤</button>
