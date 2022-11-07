@@ -6,7 +6,7 @@ import DetailNavigateButton from '../components/DetailNavigateButton'
 
 
 
-function Details({ setSelected, data, availbility, setDirectionResponse, duration, setDuration, setNavigate, setIsReporting}) {
+function Details({ setSelected, data, availbility, setDirectionResponse, duration, setDuration, setNavigate, setIsReporting,navigate}) {
     //let time = new Date().getHours()
     let availableNum = availbility.filter(a => a.id === data.id)
     let isMachine = data.summary.includes("塔台式")

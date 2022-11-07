@@ -46,7 +46,7 @@ const Map = () => {
   const [duration,setDuration] = useState('')
   const [navigate,setNavigate] = useState(null)
   const [isLoading,setIsLoading] = useState(1)
-  const[isHelp,setIsHelp] = useState(null)
+  const[isHelp,setIsHelp] = useState(false)
   const [selected, setSelected] = useState(null)
   const [isReporting,setIsReporting] = useState(null)
   const mapRef = useRef()
@@ -161,7 +161,7 @@ setDuration(results.routes[0].legs[0].duration.text)
         {isLoading && <OpenDisplay></OpenDisplay>}
           <Navbar/>
          <Search panTo={panTo} setSearchMarkers={setSearchMarkers} usePlacesAutocomplete={usePlacesAutocomplete} getGeocode={getGeocode} getLatLng={getLatLng}/>
-         <HelpIcon setIsHelp={setIsHelp}/>
+         {!selected &&< HelpIcon setIsHelp={setIsHelp} isHelp={isHelp} setSelected={setSelected}/>}
          {isReporting && <Report setIsReporting={setIsReporting}/>}
          {currentMarker.map(marker => <Marker
           key={marker.id}
@@ -194,6 +194,7 @@ setDuration(results.routes[0].legs[0].duration.text)
           }}
           onClick={() => {
             setSelected(marker)
+            setIsHelp(false)
             fetchDirections(marker)
           }}
         />)}
@@ -209,6 +210,7 @@ setDuration(results.routes[0].legs[0].duration.text)
           }}
           onClick={() => {
             setSelected(marker)
+            setIsHelp(false)
             fetchDirections(marker)
           }}
         />)}
@@ -220,9 +222,9 @@ setDuration(results.routes[0].legs[0].duration.text)
         {selected && <Details setSelected={setSelected} data={selected}
         availbility={availbility} setDirectionResponse={setDirectionResponse}
         duration={duration} setDuration={setDuration} setNavigate={setNavigate}
-        setIsReporting={setIsReporting}
+        setIsReporting={setIsReporting} navigate={navigate}
         />}
-           {isHelp && <Help setIsHelp={setIsHelp}/>}
+           {isHelp && !selected && <Help setIsHelp={setIsHelp} />}
       </div>
       
        
