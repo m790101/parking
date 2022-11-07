@@ -3,18 +3,14 @@ import '../style/details.scss'
 import { useState,useRef } from 'react'
 import Swal from 'sweetalert2'
 import DetailNavigateButton from '../components/DetailNavigateButton'
-import {isInRange} from '../utils/isInRange'
 
 
-function Details({ setSelected, data, availbility, setDirectionResponse, duration, setDuration, setNavigate, setIsReporting,navigate}) {
+function Details({ setSelected, data, availbility, setDirectionResponse, duration, setDuration, setNavigate, setIsReporting}) {
     //let time = new Date().getHours()
     let availableNum = availbility.filter(a => a.id === data.id)
     let isMachine = data.summary.includes("塔台式")
     const [num, setNum] = useState(data.id)
     const timer = useRef();
-    const day = new Date().getDay()
-    const time = new Date().getHours()+':'+ '00'
-    let fare = ''
     if(num !== data.id){
     clearInterval(timer.current)
     }
@@ -63,7 +59,7 @@ function clearUp() {
     setNavigate(null)
     clearInterval(timer.current)
 }
-if(data.FareInfo){
+/*if(data.FareInfo){
     if(day > 0 && day <= 5){
         for (let i = 0; i < data.FareInfo.WorkingDay.length; i++) {
             let timeFix = data.FareInfo.WorkingDay[i].Period.split('~')
@@ -82,7 +78,7 @@ if(data.FareInfo){
             }
           }
     }
-}
+}*/
 
 
     return (
@@ -90,7 +86,7 @@ if(data.FareInfo){
             <div className='d-flex align-items-center justify-content-between'>
                 <div className='d-flex details__header align-items-center'>
                     <p className='fw-bold'>{data.name}</p>
-                    {<p>{fare}/H</p>}
+                    {<p>{data.fare?data.fare:'無'}/H</p>}
                 </div>
                 <img src="https://i.imgur.com/efx42hL.png" alt="" className='details__close' onClick={()=>{clearUp()}} />
             </div>

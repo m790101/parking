@@ -2,7 +2,14 @@
     width:100%;
     height:calc(100vh - 90px);
 }
-
+.marker-label{
+    position: relative;
+    bottom:30px;
+    color: var(--8-gray);
+    padding: 5px;
+    border-radius: 50%;
+    background-color: var(--white);
+}
 .try{
 position: relative;
 }
