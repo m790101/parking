@@ -31,7 +31,6 @@ parkingDb = parkingDb.map((park) => {
     cap:(a[0].availablecar/park.totalcar)
   }
 })
-const containerStyle = { width: '100%', height: '100vh' ,display:'flex'}
 let center = { lat: 25.03, lng: 121.554 }
 
 
@@ -52,6 +51,8 @@ const Map = () => {
   const mapRef = useRef()
   const onMapLoad = useCallback(map => {
     mapRef.current = map
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
 
   }, [])
 
@@ -141,25 +142,28 @@ setDuration(results.routes[0].legs[0].duration.text)
       <div className='map' data-testid='map'>
 
          <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} setIsLoading={setIsLoading} getLatLng={getLatLng}/>
+         <Navbar/>
          <div className='try'>
          <GoogleMap
          data-testid='google-map'
           className='google-map'
           center={center}
           zoom={13}
-          mapContainerStyle={containerStyle}
+          mapContainerClassName='map-container'
+          //mapContainerStyle={containerStyle}
           options={{
             streetViewControl: false,
             mapTypeControl: false,
             fullScreenControl: false,
             disableDefaultUI: true,
+            clickableIcons:false,
             zoomControl: false,
             styles: mapStyle
           }}
           onLoad={onMapLoad}
         >
         {isLoading && <OpenDisplay></OpenDisplay>}
-          <Navbar/>
+
          <Search panTo={panTo} setSearchMarkers={setSearchMarkers} usePlacesAutocomplete={usePlacesAutocomplete} getGeocode={getGeocode} getLatLng={getLatLng}/>
          {!selected &&< HelpIcon setIsHelp={setIsHelp} isHelp={isHelp} setSelected={setSelected}/>}
          {isReporting && <Report setIsReporting={setIsReporting}/>}

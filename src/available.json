@@ -564,6 +564,739 @@
             "spot_status" : "充電中"
           } ]
         }
-      }]
+      },{
+        "id" : "046",
+        "availablecar" : 6,
+        "availablemotor" : 136,
+        "availablebus" : -9
+      }, {
+        "id" : "048",
+        "availablecar" : 4,
+        "availablemotor" : 0,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "081",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "082",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "049",
+        "availablecar" : 47,
+        "availablemotor" : -9,
+        "availablebus" : -9
+      }, {
+        "id" : "050",
+        "availablecar" : 1324,
+        "availablemotor" : 422,
+        "availablebus" : -9
+      }, {
+        "id" : "051",
+        "availablecar" : 42,
+        "availablemotor" : 20,
+        "availablebus" : -9
+      }, {
+        "id" : "052",
+        "availablecar" : 5,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "071",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "072",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "078",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "053",
+        "availablecar" : 185,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "242",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "243",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "244",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "241",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "054",
+        "availablecar" : 20,
+        "availablemotor" : -9,
+        "availablebus" : -9
+      }, {
+        "id" : "055",
+        "availablecar" : 24,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "047",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "048",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "086",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "087",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "088",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "089",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "090",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "091",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "056",
+        "availablecar" : 234,
+        "availablemotor" : 161,
+        "availablebus" : 0,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "B1-537",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "B1-538",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "B1-541",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "B1-539",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "B1-540",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "057",
+        "availablecar" : 16,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "133",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "151",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "152",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "153",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "154",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "155",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "156",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "182",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "058",
+        "availablecar" : 112,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "133",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "151",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "152",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "153",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "154",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "155",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "156",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "182",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "059",
+        "availablecar" : 203,
+        "availablemotor" : -9,
+        "availablebus" : -9
+      }, {
+        "id" : "061",
+        "availablecar" : 189,
+        "availablemotor" : 0,
+        "availablebus" : -9
+      }, {
+        "id" : "066",
+        "availablecar" : 46,
+        "availablemotor" : -9,
+        "availablebus" : -9
+      }, {
+        "id" : "067",
+        "availablecar" : 57,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "018",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "054",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "068",
+        "availablecar" : 53,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "001",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "002",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "003",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "004",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "069",
+        "availablecar" : 95,
+        "availablemotor" : 36,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "081",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "082",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "038",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "039",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "070",
+        "availablecar" : 13,
+        "availablemotor" : 4,
+        "availablebus" : -9
+      }, {
+        "id" : "071",
+        "availablecar" : 0,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "113",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "114",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "115",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "116",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "117",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "072",
+        "availablecar" : 53,
+        "availablemotor" : 21,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "004",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "005",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "073",
+        "availablecar" : 80,
+        "availablemotor" : -9,
+        "availablebus" : -9
+      }, {
+        "id" : "074",
+        "availablecar" : 0,
+        "availablemotor" : 0,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "9",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "8",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "30",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "31",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "075",
+        "availablecar" : 0,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "278",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "277",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "276",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "275",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "274",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "273",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "272",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "271",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "270",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "076",
+        "availablecar" : 0,
+        "availablemotor" : 0,
+        "availablebus" : 0
+      }, {
+        "id" : "077",
+        "availablecar" : 31,
+        "availablemotor" : 0,
+        "availablebus" : -9
+      }, {
+        "id" : "078",
+        "availablecar" : 88,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "204",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "205",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "079",
+        "availablecar" : 34,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "306",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "412",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "338",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "339",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "368",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "369",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "370",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "371",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "372",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "373",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "080",
+        "availablecar" : 55,
+        "availablemotor" : 34,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "B1-127",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "B1-128",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "B1-129",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "B1-130",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "081",
+        "availablecar" : 30,
+        "availablemotor" : -9,
+        "availablebus" : -9
+      }, {
+        "id" : "082",
+        "availablecar" : 8,
+        "availablemotor" : 0,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "040",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "041",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "084",
+        "availablecar" : 42,
+        "availablemotor" : -9,
+        "availablebus" : -9
+      }, {
+        "id" : "085",
+        "availablecar" : 81,
+        "availablemotor" : 98,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "255",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "256",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "252",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "253",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "254",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "257",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "086",
+        "availablecar" : 31,
+        "availablemotor" : 40,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "201",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "202",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "203",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "204",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "205",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "206",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "087",
+        "availablecar" : 4,
+        "availablemotor" : 181,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "035",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "036",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "088",
+        "availablecar" : 36,
+        "availablemotor" : 0,
+        "availablebus" : -9
+      }, {
+        "id" : "089",
+        "availablecar" : 14,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "114",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "116",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "117",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "101",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "102",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "103",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "104",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "105",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "090",
+        "availablecar" : 74,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "179",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "181",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "182",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "177",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "178",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "180",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "091",
+        "availablecar" : 55,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "B4-4117",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "B4-4118",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "B4-4119",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "B4-4120",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "B4-4121",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "B4-4122",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "B4-4123",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "B4-4124",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "B4-4125",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "B4-4126",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "092",
+        "availablecar" : 14,
+        "availablemotor" : 84,
+        "availablebus" : -9
+      }, {
+        "id" : "093",
+        "availablecar" : 87,
+        "availablemotor" : 50,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "037",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "038",
+            "spot_status" : "充電中"
+          } ]
+        }
+      }, {
+        "id" : "094",
+        "availablecar" : 6,
+        "availablemotor" : 0,
+        "availablebus" : -9
+      }, {
+        "id" : "095",
+        "availablecar" : 11,
+        "availablemotor" : -9,
+        "availablebus" : -9
+      }, {
+        "id" : "096",
+        "availablecar" : 41,
+        "availablemotor" : 96,
+        "availablebus" : -9
+      }, {
+        "id" : "097",
+        "availablecar" : 36,
+        "availablemotor" : -9,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "028",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "029",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "098",
+        "availablecar" : 66,
+        "availablemotor" : -9,
+        "availablebus" : -9
+      }, {
+        "id" : "099",
+        "availablecar" : 1,
+        "availablemotor" : 1,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "018",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "019",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }, {
+        "id" : "100",
+        "availablecar" : 103,
+        "availablemotor" : 0,
+        "availablebus" : -9,
+        "ChargeStation" : {
+          "scoketStatusList" : [ {
+            "spot_abrv" : "013",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "014",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "015",
+            "spot_status" : "待機中"
+          }, {
+            "spot_abrv" : "016",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "017",
+            "spot_status" : "充電中"
+          }, {
+            "spot_abrv" : "012",
+            "spot_status" : "待機中"
+          } ]
+        }
+      }
+    ]
     }
 }
