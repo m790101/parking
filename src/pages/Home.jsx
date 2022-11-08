@@ -86,17 +86,11 @@ const Map = () => {
     mapRef.current = map
     const bounds = new window.google.maps.LatLngBounds();
     bounds.extend(center)
-    bounds.extend({ lat: center.lat + 0.002, lng: center.lng + 0.002 })
+    bounds.extend({ lat: center.lat + 0.02, lng: center.lng + 0.02})
     map.fitBounds(bounds);
 
   }, [])
 
-  /*const initialPanTo = useCallback(({ lat, lng }) => {
-    center = { lat: lat, lng: lng } 
-    mapRef.current.panTo({ lat, lng });
-    //mapRef.current.setZoom(17);
-
-  }, []);*/
   const panTo = useCallback(({ lat, lng }) => {
 
     mapRef.current.panTo({ lat, lng });
@@ -126,10 +120,6 @@ const Map = () => {
     })
     watchId = navigator.geolocation.watchPosition(
       (position) => {
-        /*initialPanTo({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });*/
         setCurrentMarkers(() => [{
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -227,7 +217,7 @@ const Map = () => {
           data-testid='google-map'
           className='google-map'
           center={center}
-          zoom={13}
+          zoom={12}
           mapContainerClassName='map-container'
           //mapContainerStyle={containerStyle}
           options={{
