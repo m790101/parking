@@ -79,6 +79,7 @@ const Map = () => {
   const [isHelp, setIsHelp] = useState(false)
   const [selected, setSelected] = useState(null)
   const [isReporting, setIsReporting] = useState(null)
+  //const [intialPostition,setIntialPostition] = useState({ lat: 0, lng: 0 })
   const mapRef = useRef()
   let watchId = null
   const onMapLoad = useCallback(map => {
@@ -90,12 +91,12 @@ const Map = () => {
 
   }, [])
 
-  const initialPanTo = useCallback(({ lat, lng }) => {
+  /*const initialPanTo = useCallback(({ lat, lng }) => {
     center = { lat: lat, lng: lng } 
     mapRef.current.panTo({ lat, lng });
     //mapRef.current.setZoom(17);
 
-  }, []);
+  }, []);*/
   const panTo = useCallback(({ lat, lng }) => {
 
     mapRef.current.panTo({ lat, lng });
@@ -117,13 +118,18 @@ const Map = () => {
   }, [])
 
   const initialLocate = useCallback(() => {
-
-    watchId = navigator.geolocation.watchPosition(
-      (position) => {
-        initialPanTo({
+    navigator.geolocation.getCurrentPosition((position)=>{
+        panTo({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
+    })
+    watchId = navigator.geolocation.watchPosition(
+      (position) => {
+        /*initialPanTo({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });*/
         setCurrentMarkers(() => [{
           lat: position.coords.latitude,
           lng: position.coords.longitude,
