@@ -105,7 +105,7 @@ const Map = () => {
   }, [])
 
   const initialLocate = useCallback(() => {
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.watchPosition(
       (position) => {
         panTo({
           lat: position.coords.latitude,
@@ -151,7 +151,6 @@ const Map = () => {
               }
             }
           }
-          console.log(fare)
           const response = await getGeocode({ address: p.address })
           const { lat, lng } = await getLatLng(response[0]);
           initialMarkers(p, lat, lng, availableDb, fare)
@@ -200,7 +199,7 @@ const Map = () => {
   return (
     <div className='map' data-testid='map'>
 
-      <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} setIsLoading={setIsLoading} getLatLng={getLatLng} />
+      <Locate panTo={panTo} currentMarker={currentMarker} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} setIsLoading={setIsLoading} getLatLng={getLatLng} />
       <Navbar />
       <div className='try'>
         <GoogleMap
