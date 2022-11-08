@@ -16,7 +16,11 @@ import Report from '../components/Report'
 import Locate from '../components/Locate'
 import Search from '../components/Search'
 import { isInRange } from '../utils/isInRange'
-
+const options = {
+  enableHighAccuracy: false,
+  timeout: 1000,
+  maximumAge: 0
+}
 const markerIcon = {
   black: 'https://i.imgur.com/FBoOQuh.png',
   yellow: 'https://i.imgur.com/lKDCX1d.png',
@@ -76,18 +80,26 @@ const Map = () => {
   const [selected, setSelected] = useState(null)
   const [isReporting, setIsReporting] = useState(null)
   const mapRef = useRef()
+  let watchId = null
   const onMapLoad = useCallback(map => {
     mapRef.current = map
-    const bounds = new window.google.maps.LatLngBounds(center);
+    const bounds = new window.google.maps.LatLngBounds();
+    bounds.extend(center)
+    bounds.extend({ lat: center.lat + 0.002, lng: center.lng + 0.002 })
     map.fitBounds(bounds);
 
   }, [])
 
+  const initialPanTo = useCallback(({ lat, lng }) => {
+    center = { lat: lat, lng: lng } 
+    mapRef.current.panTo({ lat, lng });
+    //mapRef.current.setZoom(17);
 
+  }, []);
   const panTo = useCallback(({ lat, lng }) => {
 
     mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(17);
+    mapRef.current.setZoom(16);
 
   }, []);
   const initialMarkers = useCallback((p, lat, lng, availableDb, fare) => {
@@ -105,9 +117,10 @@ const Map = () => {
   }, [])
 
   const initialLocate = useCallback(() => {
-    navigator.geolocation.watchPosition(
+
+    watchId = navigator.geolocation.watchPosition(
       (position) => {
-        panTo({
+        initialPanTo({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
@@ -118,7 +131,7 @@ const Map = () => {
         }])
         setIsLoading(null)
       },
-      () => null
+      () => null,options
     )
   }, [panTo])
 
@@ -160,10 +173,12 @@ const Map = () => {
       }
       )
       .then(() => {
+
         initialLocate()
       })
       .then(() => { })
-  }, [initialLocate, initialMarkers])
+      return navigator.geolocation.clearWatch(watchId)
+  }, [initialLocate, initialMarkers,watchId])
 
 
 
