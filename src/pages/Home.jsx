@@ -27,7 +27,8 @@ let parkingDb = db.data.park
 parkingDb = parkingDb.map((park) => {
   let a = availableDb.filter(a => park.id === a.id)
   const day = new Date().getDay()
-  const time = new Date().getHours() + ': 00'
+  const timeOrigin = new Date().getHours()
+  const time = Number(timeOrigin) < 10 ? '0' + timeOrigin + ':00':timeOrigin + ':00'
   let fare = ''
   if (park.FareInfo.WorkingDay) {
     if (day > 0 && day <= 5) {
@@ -49,7 +50,6 @@ parkingDb = parkingDb.map((park) => {
       }
     }
   }
-
 
   return {
     ...park,
@@ -105,7 +105,7 @@ const Map = () => {
   }, [])
 
   const initialLocate = useCallback(() => {
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.watchPosition(
       (position) => {
         panTo({
           lat: position.coords.latitude,
@@ -129,7 +129,8 @@ const Map = () => {
         setAvailbility(availableDb)
         data.data.park.map(async (p) => {
           const day = new Date().getDay()
-          const time = new Date().getHours() + ':' + '00'
+          const timeOrigin = new Date().getHours()
+          const time = Number(timeOrigin) < 10 ? '0' + timeOrigin + ':00':timeOrigin + ':00'
           let fare = ''
           if (p.FareInfo.WorkingDay) {
             if (day > 0 && day <= 5) {
@@ -137,7 +138,6 @@ const Map = () => {
                 let timeFix = p.FareInfo.WorkingDay[i].Period.split('~')
                 if (isInRange(time, timeFix)) {
                   fare = p.FareInfo.WorkingDay[i].Fare
-
                 }
               }
             }
@@ -156,6 +156,7 @@ const Map = () => {
           initialMarkers(p, lat, lng, availableDb, fare)
         })
         console.log('hiys')
+
       }
       )
       .then(() => {
@@ -198,7 +199,7 @@ const Map = () => {
   return (
     <div className='map' data-testid='map'>
 
-      <Locate panTo={panTo} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} setIsLoading={setIsLoading} getLatLng={getLatLng} />
+      <Locate panTo={panTo} currentMarker={currentMarker} setCurrentMarkers={setCurrentMarkers} setSearchMarkers={setSearchMarkers} setIsLoading={setIsLoading} getLatLng={getLatLng} />
       <Navbar />
       <div className='try'>
         <GoogleMap

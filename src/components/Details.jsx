@@ -59,28 +59,6 @@ function clearUp() {
     setNavigate(null)
     clearInterval(timer.current)
 }
-/*if(data.FareInfo){
-    if(day > 0 && day <= 5){
-        for (let i = 0; i < data.FareInfo.WorkingDay.length; i++) {
-            let timeFix = data.FareInfo.WorkingDay[i].Period.split('~')
-            if (isInRange(time, timeFix)) {
-              fare = data.FareInfo.WorkingDay[i].Fare
-           
-            }
-          }
-    }
-    if(day === 0 || day === 6){
-        for (let i = 0; i < data.FareInfo.Holiday.length; i++) {
-            let timeFix = data.FareInfo.Holiday[i].Period.split('~')
-            if (isInRange(time, timeFix)) {           
-              fare=data.FareInfo.Holiday[i].Fare
-             
-            }
-          }
-    }
-}*/
-
-
     return (
         <div className='details' >
             <div className='d-flex align-items-center justify-content-between'>
