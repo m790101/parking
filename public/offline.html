@@ -11,16 +11,16 @@
             body {
                 height: 100%;
                 margin: 0;
-                background: #0a1f44;
+                background:var(--brand-color);
                 display: flex;
                 align-items: center;
                 text-align: center;
                 justify-content: center;
             }
         
-            .city {
+            .offline {
                 align-items: center;
-                width: 80%;
+                width: 60%;
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
@@ -29,15 +29,15 @@
                 background: #fff;
             }
 
-            .city-name {
-                font-size: 2em;
+            .offline-name {
+                font-size: 1em;
             }
         </style>
     </head>
     <body>
-        <div class="city">
-            <h2 class="city-name">
-                <span>Please go online to check the current weather.</span>
+        <div class="offline">
+            <h2 class="offline-name">
+                <span>請連接網路才能使用喔</span>
             </h2>
         </div>
     </body>
