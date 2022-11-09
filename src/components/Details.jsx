@@ -64,7 +64,7 @@ function clearUp() {
             <div className='d-flex align-items-center justify-content-between'>
                 <div className='d-flex details__header align-items-center'>
                     <p className='fw-bold'>{data.name}</p>
-                    {<p>{data.fare?data.fare:'無'}/H</p>}
+                    {<p>${data.fare?data.fare:'無'}/H</p>}
                 </div>
                 <img src="https://i.imgur.com/efx42hL.png" alt="" className='details__close' onClick={()=>{clearUp()}} />
             </div>
