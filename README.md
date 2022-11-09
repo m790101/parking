@@ -8,11 +8,9 @@
 
   <p align="center">
     Never worry finding parking lot again!
-
+<div align="center">
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 Finding parking lot can be painful,especially in somewhere you are not familiar with or even first time.
 
@@ -22,15 +20,12 @@ With this Parking Web App:
 * Get rate right away so you will never overpay.
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
 
 * [![React][React.js]][React-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -52,8 +47,6 @@ With this Parking Web App:
    ```js
    REACT_APP_GOOGLE_MAP_API_KEY = 'ENTER YOUR API';
    ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 In the project directory, you can run:
 ### `npm start`
 
@@ -109,9 +102,6 @@ If during the navigation the parking lot run out of space.
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
@@ -119,5 +109,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Your Name - HaoWen Cheng - m790101@hotmail.com
 
 Project Link: [https://github.com/your_username/repo_name]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
