@@ -36,6 +36,24 @@ With this Parking Web App:
 
 <!-- GETTING STARTED -->
 ## Getting Started
+
+### Installation
+
+1. Get a map API Key at [https://developers.google.com/maps]
+2. Clone the repo
+   ```sh
+   git clone https://github.com/m790101/parking.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Enter your API in `env.local`
+   ```js
+   REACT_APP_GOOGLE_MAP_API_KEY = 'ENTER YOUR API';
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 In the project directory, you can run:
 ### `npm start`
 
@@ -64,11 +82,24 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+<p align="center">
+  <img src="https://i.imgur.com/3ee4f0N.png" width="350" title="hover text">
+</p>
+<p align="center">
+You can navigate to the parking lot you like. 
+  <img src="https://i.imgur.com/QF29wri.png" width="350" title="hover text">
+</p>
+<p align="center">
+you can search places
+  <img src="https://i.imgur.com/56KwHVf.png" width="350" title="hover text">
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/8wstam5.png" width="350" title="hover text">
+</p>
+<p align="center">
+If during the navigation the parking lot run out of space.
+  <img src="https://i.imgur.com/FokH1m2.png" width="350" title="hover text">
+</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
