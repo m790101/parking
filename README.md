@@ -1,4 +1,3 @@
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
     <img src="https://i.imgur.com/b6dyTrY.png" alt="Logo" width="80" height="80">
@@ -8,8 +7,8 @@
 
   <p align="center">
     Never worry finding parking lot again!
-<div align="center">
-<!-- ABOUT THE PROJECT -->
+</div>
+
 ## About The Project
 
 Finding parking lot can be painful,especially in somewhere you are not familiar with or even first time.
@@ -24,7 +23,8 @@ With this Parking Web App:
 
 ### Built With
 
-* [![React][React.js]][React-url]
+React
+https://reactjs.org/
 
 
 
@@ -47,7 +47,8 @@ With this Parking Web App:
    ```js
    REACT_APP_GOOGLE_MAP_API_KEY = 'ENTER YOUR API';
    ```
-In the project directory, you can run:
+   
+### In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -77,24 +78,14 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ## Usage
 <p align="center">
   <img src="https://i.imgur.com/3ee4f0N.png" width="350" title="hover text">
+ <img src="https://i.imgur.com/QF29wri.png" width="350" title="hover text">
 </p>
-<p align="center">
-You can navigate to the parking lot you like. 
-  <img src="https://i.imgur.com/QF29wri.png" width="350" title="hover text">
-</p>
-<p align="center">
-you can search places
-  <img src="https://i.imgur.com/56KwHVf.png" width="350" title="hover text">
-</p>
-<p align="center">
-  <img src="https://i.imgur.com/8wstam5.png" width="350" title="hover text">
-</p>
-<p align="center">
-If during the navigation the parking lot run out of space.
-  <img src="https://i.imgur.com/FokH1m2.png" width="350" title="hover text">
-</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<p align="center">
+  <img src="https://i.imgur.com/56KwHVf.png" width="350" title="hover text">
+    <img src="https://i.imgur.com/8wstam5.png" width="350" title="hover text">
+      <img src="https://i.imgur.com/FokH1m2.png" width="350" title="hover text">
+</p>
 
 
 <!-- LICENSE -->
