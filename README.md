@@ -8,11 +8,9 @@
 
   <p align="center">
     Never worry finding parking lot again!
-
+</div>
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 Finding parking lot can be painful,especially in somewhere you are not familiar with or even first time.
 
