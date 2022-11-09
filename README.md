@@ -20,15 +20,12 @@ With this Parking Web App:
 * Get rate right away so you will never overpay.
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
 
 * [![React][React.js]][React-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -98,7 +95,6 @@ you can search places
 If during the navigation the parking lot run out of space.
   <img src="https://i.imgur.com/FokH1m2.png" width="350" title="hover text">
 </p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -106,8 +102,6 @@ If during the navigation the parking lot run out of space.
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -117,5 +111,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Your Name - HaoWen Cheng - m790101@hotmail.com
 
 Project Link: [https://github.com/your_username/repo_name]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
