@@ -17,22 +17,6 @@ function Locate({ panTo,setCurrentMarkers,setSearchMarkers,setIsLoading,currentM
           }])
           setIsLoading(null)
           setSearchMarkers([])
-          /*navigator.geolocation.getCurrentPosition(
-            (position) => {
-              panTo({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-              });
-              setCurrentMarkers(() => [{
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-                id: new Date().getTime()
-              }])
-              setIsLoading(null)
-              setSearchMarkers([])
-            },
-            () => null
-          );*/
   
         }
         }

@@ -64,7 +64,7 @@ parkingDb = parkingDb.map((park) => {
   }
 })
 let center = { lat: 25.03, lng: 121.554 }
-
+let watchId = null
 const Map = () => {
   const [libraries] = useState(['places'])
   let [parkingMarkers, setParkingMarkers] = useState([])
@@ -81,22 +81,16 @@ const Map = () => {
   const [isReporting, setIsReporting] = useState(null)
   //const [intialPostition,setIntialPostition] = useState({ lat: 0, lng: 0 })
   const mapRef = useRef()
-  let watchId = null
+
   const onMapLoad = useCallback(map => {
     mapRef.current = map
     const bounds = new window.google.maps.LatLngBounds();
     bounds.extend(center)
-    bounds.extend({ lat: center.lat + 0.002, lng: center.lng + 0.002 })
+    bounds.extend({ lat: center.lat + 0.02, lng: center.lng + 0.02})
     map.fitBounds(bounds);
 
   }, [])
 
-  /*const initialPanTo = useCallback(({ lat, lng }) => {
-    center = { lat: lat, lng: lng } 
-    mapRef.current.panTo({ lat, lng });
-    //mapRef.current.setZoom(17);
-
-  }, []);*/
   const panTo = useCallback(({ lat, lng }) => {
 
     mapRef.current.panTo({ lat, lng });
@@ -118,6 +112,7 @@ const Map = () => {
   }, [])
 
   const initialLocate = useCallback(() => {
+ 
     navigator.geolocation.getCurrentPosition((position)=>{
         panTo({
           lat: position.coords.latitude,
@@ -126,10 +121,6 @@ const Map = () => {
     })
     watchId = navigator.geolocation.watchPosition(
       (position) => {
-        /*initialPanTo({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });*/
         setCurrentMarkers(() => [{
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -144,6 +135,7 @@ const Map = () => {
   useEffect(() => {
     axios.get('https://my-json-server.typicode.com/m790101/parking-data/data')
       .then(data => {
+        navigator.geolocation.clearWatch(watchId)
         setParkingData(parkingDb)
         setAvailbility(availableDb)
         data.data.park.map(async (p) => {
@@ -184,7 +176,7 @@ const Map = () => {
       })
       .then(() => { })
       return navigator.geolocation.clearWatch(watchId)
-  }, [initialLocate, initialMarkers,watchId])
+  }, [initialLocate, initialMarkers])
 
 
 
@@ -227,7 +219,7 @@ const Map = () => {
           data-testid='google-map'
           className='google-map'
           center={center}
-          zoom={13}
+          zoom={12}
           mapContainerClassName='map-container'
           //mapContainerStyle={containerStyle}
           options={{
@@ -275,7 +267,7 @@ const Map = () => {
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 11)
             }}
-            label={{ text: marker.fare ? marker.fare : ' ', className: 'marker-label' }}
+            label={{ text: marker.fare ? '$'+marker.fare : ' ', className: 'marker-label' }}
             onClick={() => {
               setSelected(marker)
               setIsHelp(false)
@@ -292,7 +284,7 @@ const Map = () => {
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 11)
             }}
-            label={{ text: marker.fare, className: 'marker-label' }}
+            label={{ text: '$'+marker.fare, className: 'marker-label' }}
             onClick={() => {
               setSelected(marker)
               setIsHelp(false)
