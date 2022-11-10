@@ -17,7 +17,6 @@ this.addEventListener('fetch', (e) => {
     e.respondWith(
         caches.match(e.request)
             .then((res) => {
-                if(res === undefined) return 
                 return res || fetch(e.request) 
                     .catch(() => caches.match('offline.html'))
             })
