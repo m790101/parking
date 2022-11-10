@@ -77,8 +77,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 <!-- USAGE EXAMPLES -->
 ## Usage
 <p align="center">
-  <img src="https://i.imgur.com/3ee4f0N.png" width="350" title="hover text">
- <img src="https://i.imgur.com/QF29wri.png" width="350" title="hover text">
+  <img src="https://i.imgur.com/oa8iO4B.png" width="350" title="hover text">
+ <img src="https://i.imgur.com/yXELvKC.png" width="350" title="hover text">
 </p>
 
 <p align="center">

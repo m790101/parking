@@ -166,7 +166,6 @@ const Map = () => {
           const { lat, lng } = await getLatLng(response[0]);
           initialMarkers(p, lat, lng, availableDb, fare)
         })
-        console.log('hiys')
 
       }
       )
