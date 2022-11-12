@@ -34,9 +34,7 @@ function count() {
             })
                 .then((response) => response.json())
                 .then((json) => {
-                        console.log(json.availablecar)
-                    if (json.availablecar <= 5) {
-                        console.log('stop')
+                    if (json.availablecar <= 0) {
                         Swal.fire({
                             icon: 'error',
                             title: '已無車位，請搜尋附近停車場!',

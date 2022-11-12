@@ -7,7 +7,6 @@ this.addEventListener(('install'),(e)=>{
 e.waitUntil(
     caches.open(CACHE_NAME)
     .then((caches)=>{
-        console.log('open cache')
         return caches.addAll(urlToCaches)
     })
 )   
@@ -27,7 +26,6 @@ this.addEventListener('fetch', (e) => {
 this.addEventListener('activate', (e) => {
     const cacheWhitelist = [];
     cacheWhitelist.push(CACHE_NAME);
-    console.log('active')
     e.waitUntil(
         caches.keys().then((cacheNames) => Promise.all(
             cacheNames.map((cacheName) => {
