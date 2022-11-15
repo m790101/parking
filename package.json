@@ -4,6 +4,7 @@
   "homepage": "https://m790101.github.io/parking",
   "private": true,
   "dependencies": {
+    "@googlemaps/markerclusterer": "^2.0.13",
     "@react-google-maps/api": "^2.13.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^13.5.0",
