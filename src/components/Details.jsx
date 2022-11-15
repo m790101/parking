@@ -6,7 +6,6 @@ import DetailNavigateButton from '../components/DetailNavigateButton'
 
 
 function Details({ setSelected, data, availbility, setDirectionResponse, duration, setDuration, setNavigate, setIsReporting}) {
-    //let time = new Date().getHours()
     let availableNum = availbility.filter(a => a.id === data.id)
     let isMachine = data.summary.includes("塔台式")
     const [num, setNum] = useState(data.id)
@@ -14,7 +13,7 @@ function Details({ setSelected, data, availbility, setDirectionResponse, duratio
     if(num !== data.id){
     clearInterval(timer.current)
     }
-function count() {
+/*function count() {
     if(availableNum[0].availablecar === 0){
           return 
     }
@@ -48,7 +47,7 @@ function count() {
 
 
     }, 3000)
-}
+}*/
 function clearUp() {
     setSelected(null)
     setDirectionResponse(null)
@@ -69,12 +68,12 @@ function clearUp() {
             <div className='d-flex details__available align-items-center'>
     
                 <div>
-                    <span>總車位:  {data.totalcar} </span><span>空位數:  {availableNum[0].availablecar}  </span>
+                    <span>總車位:  {data.totalcar} </span><span>空位數: 0 {/*availableNum[0].availablecar||'無資料'*/}  </span>
                     <button className='details__available__report-btn fs-14' onClick={() => setIsReporting(1)}>回報錯誤</button>
                 </div>
             </div>
             <div className='details__icon-section d-flex justify-content-arouned align-items-center'>
-                <DetailNavigateButton setNavigate={setNavigate} count={count} duration={duration}/>
+                <DetailNavigateButton setNavigate={setNavigate}  duration={duration}/>
                 <p>{isMachine ? '機械' : '平面'}</p>
                 {data.totalmotor > 0 && <div>
                     <img src="https://i.imgur.com/XrYKfB8.png" alt="" className='details__icon-section__icon' />
