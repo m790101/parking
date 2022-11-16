@@ -151,7 +151,7 @@ const Map = () => {
             ...p,
           lat,
           lng,
-          fare: fare ,
+          fare: Number(fare) ,
           availablecar: a.length > 0 ? a[0].availablecar:"無資料"
           }
           
@@ -252,12 +252,12 @@ const Map = () => {
                 key={marker.id}
                 position={{ lat: marker.lat, lng: marker.lng }}
                 icon={{
-                  url: markerIcon.black,
+                  url: marker.availablecar === 0 ?markerIcon.red: marker.availablecar < 10 ? markerIcon.yellow : markerIcon.black,
                   scaledSize: new window.google.maps.Size(30, 30),
                   origin: new window.google.maps.Point(0, 0),
                   anchor: new window.google.maps.Point(15, 11)
                 }}
-                label={{ text: '$' + marker.fare, className: 'marker-label' }}
+                label={{ text: '$' + marker.fare || '無', className: 'marker-label' }}
                 clusterer={clusterer}
                 onClick={() => {
                   setSelected(marker)
@@ -271,12 +271,12 @@ const Map = () => {
                 key={marker.id}
                 position={{ lat: marker.lat, lng: marker.lng }}
                 icon={{
-                  url: markerIcon.black,
+                  url: marker.availablecar === 0 ?markerIcon.red: marker.availablecar < 10 ? markerIcon.yellow : markerIcon.black,
                   scaledSize: new window.google.maps.Size(30, 30),
                   origin: new window.google.maps.Point(0, 0),
                   anchor: new window.google.maps.Point(15, 11)
                 }}
-                label={{ text: '$' + marker.fare, className: 'marker-label' }}
+                label={{ text: '$' + marker.fare || '無', className: 'marker-label' }}
                 clusterer={clusterer}
                 onClick={() => {
                   setSelected(marker)

@@ -68,7 +68,7 @@ function clearUp() {
             <div className='d-flex details__available align-items-center'>
     
                 <div>
-                    <span>總車位:  {data.totalcar} </span><span>空位數: 0 {/*availableNum[0].availablecar||'無資料'*/}  </span>
+                    <span>總車位:  {data.totalcar} </span><span>空位數: {data.availablecar}  </span>
                     <button className='details__available__report-btn fs-14' onClick={() => setIsReporting(1)}>回報錯誤</button>
                 </div>
             </div>
