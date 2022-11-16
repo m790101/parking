@@ -15,6 +15,7 @@ import Locate from '../components/Locate'
 import Search from '../components/Search'
 import { isInRange } from '../utils/isInRange'
 import { twd97ToLatlng } from '../utils/twd97ToLatlng'
+import TimeDisplay from '../components/TimeDisplay'
 
 let parkingData = "https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_alldesc.json"
 let availbilityData = "https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_allavailable.json"
@@ -50,9 +51,8 @@ const Map = () => {
   const [isHelp, setIsHelp] = useState(false)
   const [selected, setSelected] = useState(null)
   const [isReporting, setIsReporting] = useState(null)
-  //const [intialPostition,setIntialPostition] = useState({ lat: 0, lng: 0 })
   const mapRef = useRef()
-  //let testMarkers= useMemo( db.data.park)
+
   const onMapLoad = useCallback(map => {
     mapRef.current = map
     const bounds = new window.google.maps.LatLngBounds();
@@ -68,23 +68,8 @@ const Map = () => {
     mapRef.current.setZoom(16);
 
   }, []);
-  /*const initialMarkers = useCallback((p, lat, lng, fare) => {
-    setParkingMarkers((currents) => {
-      currents = currents.filter(current => current.id !== p.id)
-      //let a = availableDb.filter(a => p.id === a.id)
-      return [...currents, {
-        ...p,
-        lat,
-        lng,
-        fare
-      }]
-    })
-  }, [])*/
   const initialMarkers = useCallback((data) => setParkingMarkers(data),[])
 
-  /*const initialMarkers = useMemo((data) => {
-    setParkingMarkers(data)}, [])
-*/
 
   const initialLocate = useCallback(() => {
 
@@ -118,6 +103,7 @@ const Map = () => {
             availablecar:a.availablecar < 0?'無資料':a.availablecar,
           }
         })
+      
         setAvailbility(parkingAvailability)
         let parkingLot = datas[0].data.data.park.map((p) => {
           let a = datas[1].data.data.park.filter(a => p.id === a.id)
@@ -167,8 +153,6 @@ const Map = () => {
       })
     return navigator.geolocation.clearWatch(watchId)
   }, [initialLocate, initialMarkers])
-
-
 
   //direction
   async function fetchDirections(marker) {
@@ -222,7 +206,7 @@ const Map = () => {
           onLoad={onMapLoad}
         >
           {isLoading && <OpenDisplay></OpenDisplay>}
-
+          <TimeDisplay/>
           <Search panTo={panTo} setSearchMarkers={setSearchMarkers} usePlacesAutocomplete={usePlacesAutocomplete} getGeocode={getGeocode} getLatLng={getLatLng} />
           {!selected && < HelpIcon setIsHelp={setIsHelp} isHelp={isHelp} setSelected={setSelected} />}
           {isReporting && <Report setIsReporting={setIsReporting} />}
@@ -257,7 +241,7 @@ const Map = () => {
                   origin: new window.google.maps.Point(0, 0),
                   anchor: new window.google.maps.Point(15, 11)
                 }}
-                label={{ text: '$' + marker.fare || '無', className: 'marker-label' }}
+                label={{ text: marker.fare === 0 ?'無':'$'+ marker.fare , className: 'marker-label' }}
                 clusterer={clusterer}
                 onClick={() => {
                   setSelected(marker)
@@ -266,25 +250,7 @@ const Map = () => {
                 }}
               />)}
           </MarkerClusterer>
-          <MarkerClusterer >
-            {(clusterer) => parkingMarkers.map(marker => <Marker
-                key={marker.id}
-                position={{ lat: marker.lat, lng: marker.lng }}
-                icon={{
-                  url: marker.availablecar === 0 ?markerIcon.red: marker.availablecar < 10 ? markerIcon.yellow : markerIcon.black,
-                  scaledSize: new window.google.maps.Size(30, 30),
-                  origin: new window.google.maps.Point(0, 0),
-                  anchor: new window.google.maps.Point(15, 11)
-                }}
-                label={{ text: '$' + marker.fare || '無', className: 'marker-label' }}
-                clusterer={clusterer}
-                onClick={() => {
-                  setSelected(marker)
-                  setIsHelp(false)
-                  fetchDirections(marker)
-                }}
-              />)}
-          </MarkerClusterer>
+
           {navigate && <DirectionsRenderer directions={directionResponse} options={{ suppressMarkers: true }} />}
         </GoogleMap>
 

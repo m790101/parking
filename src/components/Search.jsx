@@ -8,13 +8,10 @@
       clearSuggestions,
     } = usePlacesAutocomplete({
       requestOptions: {
-        //location:{lat: ()=>25.03, lng: ()=>121.554},
-        //radius:200*1000
       }
     })
     const handleInput = (e) => {
       setValue(e.target.value);
-      //e.preventDefalut()
     }
 
     const handleSelect =
