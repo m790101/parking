@@ -1,6 +1,6 @@
 import moment from "moment";
 
-function dateDisplay(time){
+function dateDisplay(){
    return  moment().format('YYYY-MM-DD HH:mm')
 }
 

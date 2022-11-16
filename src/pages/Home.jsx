@@ -16,6 +16,7 @@ import Search from '../components/Search'
 import { isInRange } from '../utils/isInRange'
 import { twd97ToLatlng } from '../utils/twd97ToLatlng'
 import TimeDisplay from '../components/TimeDisplay'
+import {fareExtract} from '../utils/fareExtract'
 
 let parkingData = "https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_alldesc.json"
 let availbilityData = "https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_allavailable.json"
@@ -132,12 +133,11 @@ const Map = () => {
               }
             }
           }
-          //initialMarkers(p, lat, lng, fare)
           return {
             ...p,
           lat,
           lng,
-          fare: Number(fare) ,
+          fare: fareExtract(Number(fare),p.payex) ,
           availablecar: a.length > 0 ? a[0].availablecar:"無資料"
           }
           
@@ -146,9 +146,7 @@ const Map = () => {
       }
       )
       .then((data) => {
-        //initialMarkers(data)
         initialMarkers(data)
-        //setParkingMarkers(data)
         initialLocate()
       })
     return navigator.geolocation.clearWatch(watchId)
